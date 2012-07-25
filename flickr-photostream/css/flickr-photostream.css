@@ -1,0 +1,45 @@
+/* 
+Flickr Photostream
+Version: 1.0
+Author: Miro Mannino
+Author URI: http://miromannino.it
+
+Copyright 2012 Miro Mannino (miro.mannino@gmail.com)
+thanks to Dan Coulter for phpFlickr Class (dan@dancoulter.com)
+
+This file is part of Flickr Photostream.
+
+Flickr Photostream is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the Free Software 
+Foundation, either version 3 of the License, or (at your option) any later version.
+
+Flickr Photostream is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Flickr 
+Photostream Wordpress Plugin.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+.page-link .nav-flickrps-prev, .page-link .nav-flickrps-next { display: inline-block; }
+.flickrps-image-un {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2px;
+	margin-left: 2px;
+	overflow: hidden;	
+}
+#flickrps-row {
+	white-space: nowrap;	
+	overflow:hidden;
+	margin-bottom: 4px;
+}
+#content-flickrps { width: 100%; }
+#content-flickrps .flickrps-image {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+#content-flickrps .flickrps-image img { max-width: 100%; }
+#content-flickrps { margin-bottom: 10px; }
