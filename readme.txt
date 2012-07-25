@@ -8,7 +8,7 @@ Stable tag:
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 
-Allows you to show your Flickr Photostream in your blog. Awesome thumbnails disposition with a justified grid.
+Just your beautiful Flickr Photostream.
 
 == Description ==
 
