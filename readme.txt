@@ -4,7 +4,7 @@ Donate link: http://miromannino.it
 Tags: photography, gallery, photo, flickr, justified, grid
 Requires at least: 3.4
 Tested up to: 3.4.1
-Stable tag:
+Stable tag: 1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 
