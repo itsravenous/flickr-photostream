@@ -19,7 +19,7 @@ See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
 Remember that this plugin is not an official Flickr® plugin, but just a student's work, any help will be greatly appreciated.
 
 Future improvements
-===================
+-------------------
 
 - Optional error message for IE8 or lower
 - Support for multiple gallery instances
@@ -32,7 +32,7 @@ Future improvements
 Thanks to [MacItaly](http://wordpress.org/support/profile/macitaly) for the improvements suggestions.
 
 Compatibility
-=============
+-------------
 
 **Compatible Browsers**: Chrome, Firefox, Safari, Opera, IE9, Chrome for Android, Android Browser
 
