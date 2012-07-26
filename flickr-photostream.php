@@ -54,10 +54,14 @@ function flickrps_init() {
 	load_plugin_textdomain('flickr-photostream', false, dirname(plugin_basename( __FILE__ )) . '/languages/');
 	
 	/* add custom permalink */
-	/*global $wp_rewrite;
-	$wp_rewrite->add_rule('flickr-photostream/page/([0-9]+)/?$', 'index.php?pagename=flickr-photostream&flickrpsp=$matches[1]', 'top');
-	$wp_rewrite->add_rule('flickr-photostream/page/([0-9]+)?$', 'index.php?pagename=flickr-photostream&flickrpsp=$matches[1]', 'top');
-	$wp_rewrite->flush_rules();*/
+	/*
+	global $wp_rewrite;
+	$wp_rewrite->add_rule('flickr-photostream/page/([0-9]+)/?$', 
+						  'index.php?pagename=flickr-photostream&flickrpsp=$matches[1]', 'top');
+	$wp_rewrite->add_rule('flickr-photostream/page/([0-9]+)?$', 
+						  'index.php?pagename=flickr-photostream&flickrpsp=$matches[1]', 'top');
+	$wp_rewrite->flush_rules();
+	*/
 }
 
 //Add the vars so that WP recognizes it
@@ -81,7 +85,7 @@ function addFlickrPhotostreamCSSandJS() {
 add_shortcode('flickrps', 'flickr_photostream');
 function flickr_photostream() {  
 
-	require_once("phpFlickr.php");
+	require_once("phpFlickr/phpFlickr.php");
 	$ris = "";
 
 	$permalink = get_permalink();
@@ -107,7 +111,8 @@ function flickr_photostream() {
     $photos = $f->people_getPublicPhotos($userID, NULL, "description", $maxNumPhotos, $flickrpsp);
 
 	$ris .= 
-	  '<script type="text/javascript">'
+	  '<!-- Flickr Photostream by Miro Mannino -->'
+	. '<script type="text/javascript">'
 	. '	var rowHeight = ' . $imagesHeight . ';' 
 	. '	var justifyLastRow = ' . (($justifyLastRow != 0)?"true":"false") . ';'
 	. ' var fixedHeight = ' . (($fixedHeight != 0)?"true":"false") . ';'
@@ -120,12 +125,20 @@ function flickr_photostream() {
 
 	$ris .= '<div id="content-flickrps">';
 
+	if($imagesHeight <= 75){
+		$imgSize = "thumbnail"; //thumbnail (width:100)
+	}else if($imagesHeight <= 160){
+		$imgSize = "small"; //small (width:240)
+	}else{
+		$imgSize = "small_320"; //small (width:320)
+	}
+
 	$r = 0;
     foreach ((array)$photos['photos']['photo'] as $photo) {
 		$ris .= 
 		  '<div class="flickrps-image-un">'
 		. '	<a href="' . $photos_url . $photo[id] . '/in/photostream/lightbox/" target="_blank">'
-		. '		<img alt="' . $photo[title] . '" src="' . $f->buildPhotoURL($photo, 'thumbnail') . '"/>'
+		. '		<img alt="' . $photo[title] . '" src="' . $f->buildPhotoURL($photo, $imgSize) . '"/>'
 		. '	</a>'
 		. '</div>';
     }

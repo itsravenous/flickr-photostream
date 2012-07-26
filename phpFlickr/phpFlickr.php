@@ -13,6 +13,7 @@
  *	 Please submit all problems or questions to the Help Forum on my Google Code project page:
  *		 http://code.google.com/p/phpflickr/issues/list
  *
+ * The function buildPhotoURL was changed by Miro Mannino to allow more image size suffixes.
  */ 
 if ( !class_exists('phpFlickr') ) {
 	if (session_id() == "") {
@@ -360,6 +361,7 @@ if ( !class_exists('phpFlickr') ) {
 				"square" => "_s",
 				"thumbnail" => "_t",
 				"small" => "_m",
+				"small_320" => "_n",
 				"medium" => "",
 				"medium_640" => "_z",
 				"large" => "_b",

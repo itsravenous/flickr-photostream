@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flickr Photostream\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 22:55+0100\n"
-"PO-Revision-Date: 2012-07-23 22:55+0100\n"
+"POT-Creation-Date: 2012-07-26 11:15+0100\n"
+"PO-Revision-Date: 2012-07-26 11:15+0100\n"
 "Last-Translator: Miro Mannino <miro.mannino@gmail.com>\n"
 "Language-Team: Miro Mannino <miro.mannino@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,8 @@ msgid "Invalid UserID"
 msgstr "ID Utente non valido"
 
 #: ../flickr-photostream-setting.php:99
-msgid "The 'Images Height' must be a value greater than 10"
-msgstr "Il campo 'Altezza Immagini' deve essere un valore maggiore o uguale a 10"
+msgid "The 'Images Height' must be a value greater than 30"
+msgstr "Il campo 'Altezza Immagini' deve essere un valore maggiore o uguale a 30"
 
 #: ../flickr-photostream-setting.php:104
 msgid "The 'photos per page' must be a value greater than 0"
@@ -79,11 +79,11 @@ msgstr "Salva le modifiche"
 msgid "Flickr Photostream can't be activated: the cache Folder is not writable"
 msgstr "Flickr Photostream non può essere attivato: la cartella chache non è scrivibile"
 
-#: ../flickr-photostream.php:144
+#: ../flickr-photostream.php:156
 msgid "<span class=\"meta-nav\">&larr;</span> Older photos"
 msgstr "<span class=\"meta-nav\">&larr;</span> Foto meno recenti"
 
-#: ../flickr-photostream.php:151
+#: ../flickr-photostream.php:163
 msgid "Newer photos <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
 

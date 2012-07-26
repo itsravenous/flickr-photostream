@@ -1,6 +1,6 @@
 /* 
 Flickr Photostream
-Version: 1.0
+Version: 1.0.1
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -25,9 +25,8 @@ Photostream Wordpress Plugin.  If not, see <http://www.gnu.org/licenses/>.
 .flickrps-image-un {
 	display: inline-block;
 	vertical-align: top;
-	margin-right: 2px;
-	margin-left: 2px;
-	overflow: hidden;	
+	margin: 0px 2px 4px 2px;
+	overflow: hidden;
 }
 #flickrps-row {
 	white-space: nowrap;	
@@ -38,8 +37,7 @@ Photostream Wordpress Plugin.  If not, see <http://www.gnu.org/licenses/>.
 #content-flickrps .flickrps-image {
 	display: inline-block;
 	vertical-align: top;
-	margin-right: 2px;
-	margin-left: 2px;
+	margin-left: 4px;	
 }
 #content-flickrps .flickrps-image img { max-width: 100%; }
 #content-flickrps { margin-bottom: 10px; }

@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 1.0
+Version: 1.0.1
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -76,7 +76,7 @@ function flickr_photostream_setting(){
     	$error_msg = "";
 
 		//Check the API Key
-		require_once("phpFlickr.php");
+		require_once("phpFlickr/phpFlickr.php");
 		$flickr_photostream_APIKey_saved = $_POST["flickr_photostream_APIKey"];
 		$f = new phpFlickr($flickr_photostream_APIKey_saved);
 
@@ -94,9 +94,9 @@ function flickr_photostream_setting(){
 		}
 
         $flickr_photostream_imagesHeight_saved = $_POST["flickr_photostream_imagesHeight"];
-        if ($flickr_photostream_imagesHeight_saved <= 10){
+        if ($flickr_photostream_imagesHeight_saved < 30){
        		$error = true;
-       		$error_msg .= '<li>' . __('The \'Images Height\' must be a value greater than 10', 'flickr-photostream' ) . '</li>';
+       		$error_msg .= '<li>' . __('The \'Images Height\' must be a value greater than 30', 'flickr-photostream' ) . '</li>';
        	}
        	$flickr_photostream_maxPhotosPP_saved = (int)$_POST["flickr_photostream_maxPhotosPP"];
        	if ($flickr_photostream_maxPhotosPP_saved <= 0){
