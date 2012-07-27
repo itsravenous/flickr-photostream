@@ -12,7 +12,12 @@ Just your beautiful Flickr Photostream. In a Justified Grid.
 
 == Description ==
 
-Plugin that allows you to show your Flickr Photostream in your blog. Awesome thumbnails disposition with a **justified grid**, with a Javascript algorithm, for a fast redraw. Various settings to **configure the height of the rows** and the behaviour of the last. You can configure the maximum photos per page, then, you can navigate between various pages. You can configure the plugin to create fixed height rows or to create rows where the height depends on the images. The plugin choose the right resolution for the image, using the Flickr size suffixes (for example, if you decide to justify the last row, the images in the last row can are bigger than the others, so for these photos will be used suffixes to have larger photos).
+Plugin that allows you to show your Flickr Photostream in your blog. 
+Awesome thumbnails disposition with a **justified grid**, with a Javascript algorithm, for a fast redraw. 
+Various settings to **configure the height of the rows** and the behaviour of the last. 
+You can configure the number of photos per page, then, you can navigate between various pages. 
+You can configure the plugin to create fixed height rows or to create rows where the height depends on the images. 
+The plugin chooses the right resolution for the image, using the Flickr size suffixes (for example, if you decide to justify the last row, the images in the last row can be bigger than the others, so for these photos will be used suffixes to have larger photos).
 
 See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
 
@@ -48,15 +53,15 @@ Compatibility
 
 == Frequently Asked Questions ==
 
-= You can configure the plugin to show you more than one Flickr user's Photostream?  =
+= Can I configure the plugin to show you more than one Flickr user's Photostream?  =
 
 No. I will do this in the future.
 
-= You can configure the plugin to show the titles?  =
+= Can I configure the plugin to show the titles?  =
 
 No. I will do this in the future.
 
-= The justified grid works in IE8 or lower? =
+= Does the justified grid algorithm works in IE8 or lower? =
 
 No. I disable the justified grid algorithm if IE is lower than 9 (and I show an error message).
 
