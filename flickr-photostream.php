@@ -1,11 +1,11 @@
 <?php  
 /* 
 Plugin Name: Flickr Photostream
-Plugin URI: http://miromannino.it/...
+Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream
-Version: 1.0.1
+Version: 1.1
 Author: Miro Mannino
-Author URI: http://miromannino.it
+Author URI: http://miromannino.it/about-me/
 
 Copyright 2012 Miro Mannino (miro.mannino@gmail.com)
 thanks to Dan Coulter for phpFlickr Class (dan@dancoulter.com)
@@ -52,16 +52,6 @@ add_action('init', 'flickrps_init');
 function flickrps_init() {
 	/* languages */
 	load_plugin_textdomain('flickr-photostream', false, dirname(plugin_basename( __FILE__ )) . '/languages/');
-	
-	/* add custom permalink */
-	/*
-	global $wp_rewrite;
-	$wp_rewrite->add_rule('flickr-photostream/page/([0-9]+)/?$', 
-						  'index.php?pagename=flickr-photostream&flickrpsp=$matches[1]', 'top');
-	$wp_rewrite->add_rule('flickr-photostream/page/([0-9]+)?$', 
-						  'index.php?pagename=flickr-photostream&flickrpsp=$matches[1]', 'top');
-	$wp_rewrite->flush_rules();
-	*/
 }
 
 //Add the vars so that WP recognizes it
@@ -74,16 +64,17 @@ function flickrps_insert_query_vars( $vars ) {
 //Register with hook 'wp_enqueue_scripts' which can be used for front end CSS and JavaScript
 add_action('wp_enqueue_scripts', 'addFlickrPhotostreamCSSandJS');
 function addFlickrPhotostreamCSSandJS() {
-	wp_register_style('flickrPhotostreamCSS', plugins_url('css/flickr-photostream.css', __FILE__));
-	wp_register_script('flickrPhotostreamJS', plugins_url('js/flickr-photostream-min.js', __FILE__));
-	wp_enqueue_style('flickrPhotostreamCSS');
+	wp_register_style('flickrPsCSS', plugins_url('css/flickr-photostream.css', __FILE__));
+	wp_register_script('flickrPsColorboxJS', plugins_url('js/jquery.colorbox-min.js', __FILE__));
+	wp_register_script('flickrPsJS', plugins_url('js/flickr-photostream-min.js', __FILE__));
+	wp_enqueue_style('flickrPsCSS');
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('flickrPhotostreamJS');
+	wp_enqueue_script('flickrPsColorboxJS');
+	wp_enqueue_script('flickrPsJS');
 }
 
-//Substitute the [flickrps] shortcode with the gallery
-add_shortcode('flickrps', 'flickr_photostream');
-function flickr_photostream() {  
+//[flickrps] shortcode
+function flickr_photostream( $atts, $content = null ) {
 
 	require_once("phpFlickr/phpFlickr.php");
 	$ris = "";
@@ -96,81 +87,109 @@ function flickr_photostream() {
     if(empty($flickrpsp)) $flickrpsp = 1;
 
 	/* Options */
-	$userID = get_option('$flickr_photostream_userID'); // Flickr User ID
-	$flickrAPIKey = get_option('$flickr_photostream_APIKey'); //Flickr API Key
-	$imagesHeight = (int)get_option('$flickr_photostream_imagesHeight'); //Flickr images size
-	$maxNumPhotos = (int)get_option('$flickr_photostream_maxPhotosPP'); // Max number of Photos
-	$justifyLastRow = (int)get_option('$flickr_photostream_justifyLastRow'); 
-	$fixedHeight = (int)get_option('$flickr_photostream_fixedHeight'); 
+	extract( shortcode_atts( array(
+		'user_id' => get_option('$flickr_photostream_userID'), // Flickr User ID
+		'images_height' => get_option('$flickr_photostream_imagesHeight'), // Flickr images size
+		'max_num_photos' => get_option('$flickr_photostream_maxPhotosPP'), // Max number of Photos	
+		'justify_last_row' => (get_option('$flickr_photostream_justifyLastRow') == 1 ? 'true' : 'false'),
+		'fixed_height' => (get_option('$flickr_photostream_fixedHeight') == 1 ? 'true' : 'false'),
+		'lightbox' => (get_option('$flickr_photostream_lightbox') == 1 ? 'true' : 'false'),
+		'no_pages' => (get_option('$flickr_photostream_noPages') == 1 ? 'true' : 'false')
+	), $atts ) );
 
+	$images_height = (int)$images_height;
+	if($images_height < 30) $images_height = 30;
+
+	$max_num_photos = (int)$max_num_photos;
+	if ($max_num_photos < 1) $max_num_photos = 1;
+
+	$justify_last_row = (strcmp($justify_last_row, 'true') == 0)? TRUE : FALSE;
+
+	$fixed_height = (strcmp($fixed_height, 'true') == 0)? TRUE : FALSE;
+
+	$lightbox = (strcmp($lightbox, 'true') == 0)? TRUE : FALSE;
+
+	$no_pages = (strcmp($no_pages, 'true') == 0) ? TRUE : FALSE;
+	if($no_pages) $flickrpsp = 1;
+
+	$flickrAPIKey = get_option('$flickr_photostream_APIKey'); //Flickr API Key
+	
 	$f = new phpFlickr($flickrAPIKey);
 	$upload_dir = wp_upload_dir();
 	$f->enableCache("fs", $upload_dir['basedir']."/phpFlickrCache");
 	
-    $photos_url = $f->urls_getUserPhotos($userID);
-    $photos = $f->people_getPublicPhotos($userID, NULL, "description", $maxNumPhotos, $flickrpsp);
+    $photos_url = $f->urls_getUserPhotos($user_id);
+    $photos = $f->people_getPublicPhotos($user_id, NULL, "description", $max_num_photos, $flickrpsp);
 
-	$ris .= 
-	  '<!-- Flickr Photostream by Miro Mannino -->'
-	. '<script type="text/javascript">'
-	. '	var rowHeight = ' . $imagesHeight . ';' 
-	. '	var justifyLastRow = ' . (($justifyLastRow != 0)?"true":"false") . ';'
-	. ' var fixedHeight = ' . (($fixedHeight != 0)?"true":"false") . ';'
-	. '</script>'
-	. '<style type="text/css">'
-	. '	.flickrps-image-un { height: ' . $imagesHeight . 'px; }'
-	. '	.flickrps-image-un img { height: ' . $imagesHeight . 'px; }'
-	. '	#flickrps-row { height: ' . $imagesHeight . 'px; }'
-	. '</style>';
+	$ris .= '<!-- Flickr Photostream by Miro Mannino -->'
+		 .  '<div class="content-flickrps">';
 
-	$ris .= '<div id="content-flickrps">';
+	$ris .= '  <div class="flickrps-meta">'
+		 .  '    <div class="flickrps-meta-row-height">' . $images_height . '</div>'
+		 .  '    <div class="flickrps-meta-justify-last-row">' . ($justify_last_row ? 'true' : 'false') . '</div>'
+		 .  '    <div class="flickrps-meta-fixed-height">' . ($fixed_height ? 'true' : 'false') . '</div>'
+		 .  '    <div class="flickrps-meta-lightbox">' . ($lightbox ? 'true' : 'false') . '</div>'
+		 .  '  </div>';
 
-	if($imagesHeight <= 75){
+	if($images_height <= 75){
 		$imgSize = "thumbnail"; //thumbnail (width:100)
-	}else if($imagesHeight <= 160){
+	}else if($images_height <= 160){
 		$imgSize = "small"; //small (width:240)
 	}else{
 		$imgSize = "small_320"; //small (width:320)
 	}
 
 	$r = 0;
+	static $shortcode_unique_id = 0;
     foreach ((array)$photos['photos']['photo'] as $photo) {
+		$ris .= '<div class="flickrps-image-un" style="height:' . $images_height . 'px;">';
+		if($lightbox){
+			$ris .=	
+			    ' <a href="' . $f->buildPhotoURL($photo, "large") . '" rel="lightbox[gallery-' . $shortcode_unique_id . ']" title="' . $photo[title] . '">';
+		}else{
+			$ris .= 
+			    ' <a href="' . $photos_url . $photo[id] . '/in/photostream/lightbox/" target="_blank" title="' . $photo[title] . '">';
+		}
+
 		$ris .= 
-		  '<div class="flickrps-image-un">'
-		. '	<a href="' . $photos_url . $photo[id] . '/in/photostream/lightbox/" target="_blank">'
-		. '		<img alt="' . $photo[title] . '" src="' . $f->buildPhotoURL($photo, $imgSize) . '"/>'
+		  '  <img alt="' . $photo[title] . '" src="' . $f->buildPhotoURL($photo, $imgSize) . '" style="height:' . $images_height . 'px;"/>'
 		. '	</a>'
 		. '</div>';
     }
+    $shortcode_unique_id++;
 
-    $ris .= '</div>';
+	$ris .= '</div>'; //end of <div class="content-flickrps">
 
-	//Navigation
-	$nextPhotos = $f->people_getPublicPhotos($userID, NULL, "description", $maxNumPhotos, $flickrpsp + 1);
-	if(sizeof($nextPhotos['photos']['photo']) > 0 || $flickrpsp > 1){
-		$ris .= '<div class="page-link">';
-	}
+    //Navigation
+    if(! $no_pages){
+		
+		$nextPhotos = $f->people_getPublicPhotos($user_id, NULL, "description", $max_num_photos, $flickrpsp + 1);
+		if(sizeof($nextPhotos['photos']['photo']) > 0 || $flickrpsp > 1){
+			$ris .= '<div class="page-link">';
+		}
 
-	if(sizeof($nextPhotos['photos']['photo']) > 0){
-		$ris .= 
-		  '<div class="nav-flickrps-next">'
-		. '<a href="' . $permalink . 'flickrpsp=' . ((int)$flickrpsp + 1) . '">' . __('<span class="meta-nav">&larr;</span> Older photos', 'flickr-photostream') . '</a>'
-		. '</div>';
-	}
+		if(sizeof($nextPhotos['photos']['photo']) > 0){
+			$ris .= 
+			  '<div class="nav-flickrps-next">'
+			. '<a href="' . $permalink . 'flickrpsp=' . ((int)$flickrpsp + 1) . '">' . __('<span class="meta-nav">&larr;</span> Older photos', 'flickr-photostream') . '</a>'
+			. '</div>';
+		}
 
-	if($flickrpsp > 1){
-		$ris .= 
-		  '<div class="nav-flickrps-prev">'
-		. '<a href="' . $permalink. 'flickrpsp=' . ((int)$flickrpsp - 1) . '">' . __('Newer photos <span class="meta-nav">&rarr;</span>', 'flickr-photostream') . '</a>'
-		. '</div>';
-	}
+		if($flickrpsp > 1){
+			$ris .= 
+			  '<div class="nav-flickrps-prev">'
+			. '<a href="' . $permalink. 'flickrpsp=' . ((int)$flickrpsp - 1) . '">' . __('Newer photos <span class="meta-nav">&rarr;</span>', 'flickr-photostream') . '</a>'
+			. '</div>';
+		}
 
-	if(sizeof($nextPhotos['photos']['photo']) > 0 || $flickrpsp > 1){
-		$ris .= '</div>';
+		if(sizeof($nextPhotos['photos']['photo']) > 0 || $flickrpsp > 1){
+			$ris .= '</div>';
+		}
 	}
 
 	return($ris);
-}  
+}
+add_shortcode('flickrps', 'flickr_photostream');
 
 //Options
 include("flickr-photostream-setting.php");
