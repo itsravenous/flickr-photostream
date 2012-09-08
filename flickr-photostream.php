@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream
-Version: 1.1.1
+Version: 1.2
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -65,11 +65,9 @@ function flickrps_insert_query_vars( $vars ) {
 add_action('wp_enqueue_scripts', 'addFlickrPhotostreamCSSandJS');
 function addFlickrPhotostreamCSSandJS() {
 	wp_register_style('flickrPsCSS', plugins_url('css/flickr-photostream.css', __FILE__));
-	wp_register_script('flickrPsColorboxJS', plugins_url('js/jquery.colorbox-min.js', __FILE__));
 	wp_register_script('flickrPsJS', plugins_url('js/flickr-photostream-min.js', __FILE__));
 	wp_enqueue_style('flickrPsCSS');
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('flickrPsColorboxJS');
 	wp_enqueue_script('flickrPsJS');
 }
 
@@ -122,14 +120,15 @@ function flickr_photostream( $atts, $content = null ) {
     $photos = $f->people_getPublicPhotos($user_id, NULL, "description", $max_num_photos, $flickrpsp);
 
 	$ris .= '<!-- Flickr Photostream by Miro Mannino -->'
-		 .  '<div class="content-flickrps">';
-
-	$ris .= '  <div class="flickrps-meta">'
+		 .  '<div class="flickrps-container">'
+		 .  '  <div class="flickrps-loading"><div class="flickrps-loading-img"></div></div>'
+		 .  '  <div class="flickrps-meta">'
 		 .  '    <div class="flickrps-meta-row-height">' . $images_height . '</div>'
 		 .  '    <div class="flickrps-meta-justify-last-row">' . ($justify_last_row ? 'true' : 'false') . '</div>'
 		 .  '    <div class="flickrps-meta-fixed-height">' . ($fixed_height ? 'true' : 'false') . '</div>'
 		 .  '    <div class="flickrps-meta-lightbox">' . ($lightbox ? 'true' : 'false') . '</div>'
-		 .  '  </div>';
+		 .  '  </div>'
+		 .  '  <div class="flickrps-images">';
 
 	if($images_height <= 75){
 		$imgSize = "thumbnail"; //thumbnail (width:100)
@@ -158,7 +157,8 @@ function flickr_photostream( $atts, $content = null ) {
     }
     $shortcode_unique_id++;
 
-	$ris .= '</div>'; //end of <div class="content-flickrps">
+	$ris .= '  </div>' //end of <div class="flickrps-images">
+		 .  '</div>'; //end of <div class="flickrps-container">
 
     //Navigation
     if(! $no_pages){

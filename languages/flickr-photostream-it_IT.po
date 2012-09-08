@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flickr Photostream\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 14:22+0100\n"
-"PO-Revision-Date: 2012-08-28 14:23+0100\n"
+"POT-Creation-Date: 2012-09-07 19:48+0100\n"
+"PO-Revision-Date: 2012-09-07 19:53+0100\n"
 "Last-Translator: Miro Mannino <miro.mannino@gmail.com>\n"
 "Language-Team: Miro Mannino <miro.mannino@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -39,97 +39,112 @@ msgstr "Opzioni salvate"
 msgid "Invalid values, the settings have not been updated"
 msgstr "Valori non validi, le opzioni non sono state salvate"
 
-#: ../flickr-photostream-setting.php:166
-msgid "Get your Flickr API Key from "
-msgstr "Ottieni la tua Flickr API Key da "
-
-#: ../flickr-photostream-setting.php:171
-msgid "Default values"
-msgstr "Valori di default"
-
-#: ../flickr-photostream-setting.php:175
-msgid "User ID"
-msgstr "ID Utente"
-
-#: ../flickr-photostream-setting.php:183
-msgid "Get the User ID from "
-msgstr "Ottieni l'ID Utente da "
-
-#: ../flickr-photostream-setting.php:188
-msgid "Images Height"
-msgstr "Altezza Immagini"
-
-#: ../flickr-photostream-setting.php:198
-msgid "Photos per page"
-msgstr "Foto per pagina"
-
-#: ../flickr-photostream-setting.php:208
-msgid "Justify Last Row"
-msgstr "Giustifica l'ultima riga"
-
-#: ../flickr-photostream-setting.php:219
-msgid "Fixed Height"
-msgstr "Altezza fissata"
-
-#: ../flickr-photostream-setting.php:230
-msgid "No pages"
-msgstr "No pagine"
-
-#: ../flickr-photostream-setting.php:241
-msgid "Lightbox"
-msgstr "Lightbox"
-
-#: ../flickr-photostream-setting.php:253
-msgid "Save Changes"
-msgstr "Salva le modifiche"
-
-#: ../flickr-photostream-setting.php:257
+#: ../flickr-photostream-setting.php:154
 msgid "Help"
 msgstr "Aiuto"
 
-#: ../flickr-photostream-setting.php:259
+#: ../flickr-photostream-setting.php:156
 msgid "To display a Photostream, with the default values, create a page and put the shortcode: <code>[flickrps]</code>"
 msgstr "Per mostrare il Photostream, creare una pagina inserendo il seguente shortcode: <code>[flickrps]</code>"
 
-#: ../flickr-photostream-setting.php:262
-msgid "You can use the following attributes to change the instances behaviour:"
-msgstr "Puoi utilizzare i seguenti attributi per modificare il funzionamento delle istanze"
+#: ../flickr-photostream-setting.php:159
+msgid "You can use the attributes to change the default settings:"
+msgstr "Puoi utilizzare gli attributi per modificare la configurazione di default"
 
-#: ../flickr-photostream-setting.php:264
-msgid "<code>user_id</code>: the user ID (i.e. <code>51035555243@N01</code>)"
-msgstr "<code>user_id</code>: l'user ID (i.e. <code>51035555243@N01</code>)"
-
-#: ../flickr-photostream-setting.php:265
-msgid "<code>images_height</code>: height of the images (in px)"
-msgstr "<code>images_height</code>: altezza delle immagini (in px)"
-
-#: ../flickr-photostream-setting.php:266
-msgid "<code>max_num_photos</code>: max number of photos per page"
-msgstr "<code>max_num_photos</code>: massimo numero di foto per pagina"
-
-#: ../flickr-photostream-setting.php:267
-msgid "<code>justify_last_row</code>: justify the last row (<code>true</code> or <code>false</code>). If <code>true</code> the last images can be very bigger than the others."
-msgstr "<code>justify_last_row</code>: giustifica l'ultima riga (<code>true</code> o <code>false</code>). Se <code>true</code> le ultime immagini potranno essere molto più grandi delle altre."
-
-#: ../flickr-photostream-setting.php:268
-msgid "<code>fixed_height</code>: fix the height of the row (<code>true</code> or <code>false</code>)"
-msgstr "<code>fixed_height</code>: fissa l'altezza delle righe (<code>true</code> o <code>false</code>)"
-
-#: ../flickr-photostream-setting.php:269
-msgid "<code>no_pages</code>: use or not the pages (<code>true</code> or <code>false</code>). In this way, you can show only the first page with the later photos."
-msgstr "<code>no_pages</code>: abilita o disabilita l'uso delle pagine (<code>true</code> o <code>false</code>). In questo modo, può essere mostrata solamente la prima pagina con le ultime foto."
-
-#: ../flickr-photostream-setting.php:270
-msgid "<code>lightbox</code>: lightbox or not the images (<code>true</code> or <code>false</code>)."
-msgstr "<code>lightbox</code>: esegue il lightbox delle immagini (<code>true</code> o <code>false</code>)."
-
-#: ../flickr-photostream-setting.php:274
+#: ../flickr-photostream-setting.php:161
 msgid "For example:"
 msgstr "Per esempio:"
 
-#: ../flickr-photostream-setting.php:277
+#: ../flickr-photostream-setting.php:164
 msgid "displays the latest 50 photos of the default user photostream, without any page navigation."
 msgstr "mostra le ultime 50 foto del photostream dell'utente di default, senza nessuna navigazione tra pagine."
+
+#: ../flickr-photostream-setting.php:169
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: ../flickr-photostream-setting.php:183
+msgid "Get your Flickr API Key from "
+msgstr "Ottieni la tua Flickr API Key da "
+
+#: ../flickr-photostream-setting.php:184
+msgid "You can't use an attribute to change this setting"
+msgstr "Non puoi utilizzare un attributo per modificare questa impostazione"
+
+#: ../flickr-photostream-setting.php:189
+msgid "User ID"
+msgstr "ID Utente"
+
+#: ../flickr-photostream-setting.php:196
+msgid "Get the User ID from "
+msgstr "Ottieni l'ID Utente da "
+
+#: ../flickr-photostream-setting.php:197
+#: ../flickr-photostream-setting.php:208
+#: ../flickr-photostream-setting.php:219
+#: ../flickr-photostream-setting.php:232
+#: ../flickr-photostream-setting.php:245
+#: ../flickr-photostream-setting.php:258
+#: ../flickr-photostream-setting.php:271
+msgid "You can use the <code>"
+msgstr "Puoi utilizzare l'attributo <code>"
+
+#: ../flickr-photostream-setting.php:197
+#: ../flickr-photostream-setting.php:208
+#: ../flickr-photostream-setting.php:219
+msgid "</code> attribute to change this default value"
+msgstr "</code> per cambiare il valore di default"
+
+#: ../flickr-photostream-setting.php:202
+msgid "Images Height (in px)"
+msgstr "Altezza Immagini (in px)"
+
+#: ../flickr-photostream-setting.php:213
+msgid "Photos per page"
+msgstr "Foto per pagina"
+
+#: ../flickr-photostream-setting.php:224
+msgid "Justify Last Row"
+msgstr "Giustifica l'ultima riga"
+
+#: ../flickr-photostream-setting.php:231
+msgid "If enabled, the last images can be very bigger than the others."
+msgstr "Se abilitato, le immagini dell'ultima riga potranno essere molto più grandi rispetto alle altre."
+
+#: ../flickr-photostream-setting.php:232
+#: ../flickr-photostream-setting.php:245
+#: ../flickr-photostream-setting.php:258
+#: ../flickr-photostream-setting.php:271
+msgid "</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)"
+msgstr "<code> per cambiare il valore di default (con i valori <code>true</code> o <code>false</code>)."
+
+#: ../flickr-photostream-setting.php:237
+msgid "Fixed Height"
+msgstr "Altezza fissata"
+
+#: ../flickr-photostream-setting.php:244
+msgid "If enabled, each row has the same height, but the images will be cut more."
+msgstr "Se abilitato, ogni riga avrà la stessa altezza, quindi le immagini potranno essere maggiormente tagliate."
+
+#: ../flickr-photostream-setting.php:250
+msgid "No pages"
+msgstr "No pagine"
+
+#: ../flickr-photostream-setting.php:257
+msgid "If enabled, the photostream doesn't have a way to show the old images, but only the newer."
+msgstr "Se abilitato, il photostream non avrà modo di mostrare le immagini più vecchie."
+
+#: ../flickr-photostream-setting.php:263
+msgid "Lightbox"
+msgstr "Lightbox"
+
+#: ../flickr-photostream-setting.php:270
+msgid "If enabled, the photo will be show using <i>colorbox</i>, make sure that you have installed it with a plugin (i.e. "
+msgstr "Se abilitato, le foto verranno mostrate utilizzando <i>colorbox</i>, assicurati di averlo installato con un plugin (i.e. "
+
+#: ../flickr-photostream-setting.php:278
+msgid "Save Changes"
+msgstr "Salva le modifiche"
 
 #: ../flickr-photostream.php:43
 msgid "Flickr Photostream can't be activated: the cache Folder is not writable"
@@ -142,6 +157,44 @@ msgstr "<span class=\"meta-nav\">&larr;</span> Foto meno recenti"
 #: ../flickr-photostream.php:181
 msgid "Newer photos <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "Default values"
+#~ msgstr "Valori di default"
+
+#~ msgid ""
+#~ "<code>user_id</code>: the user ID (i.e. <code>51035555243@N01</code>)"
+#~ msgstr "<code>user_id</code>: l'user ID (i.e. <code>51035555243@N01</code>)"
+
+#~ msgid "<code>images_height</code>: height of the images (in px)"
+#~ msgstr "<code>images_height</code>: altezza delle immagini (in px)"
+
+#~ msgid "<code>max_num_photos</code>: max number of photos per page"
+#~ msgstr "<code>max_num_photos</code>: massimo numero di foto per pagina"
+
+#~ msgid ""
+#~ "<code>justify_last_row</code>: justify the last row (<code>true</code> or "
+#~ "<code>false</code>). If <code>true</code> the last images can be very "
+#~ "bigger than the others."
+#~ msgstr ""
+#~ "<code>justify_last_row</code>: giustifica l'ultima riga (<code>true</"
+#~ "code> o <code>false</code>). Se <code>true</code> le ultime immagini "
+#~ "potranno essere molto più grandi delle altre."
+
+#~ msgid ""
+#~ "<code>fixed_height</code>: fix the height of the row (<code>true</code> "
+#~ "or <code>false</code>)"
+#~ msgstr ""
+#~ "<code>fixed_height</code>: fissa l'altezza delle righe (<code>true</code> "
+#~ "o <code>false</code>)"
+
+#~ msgid ""
+#~ "<code>no_pages</code>: use or not the pages (<code>true</code> or "
+#~ "<code>false</code>). In this way, you can show only the first page with "
+#~ "the later photos."
+#~ msgstr ""
+#~ "<code>no_pages</code>: abilita o disabilita l'uso delle pagine "
+#~ "(<code>true</code> o <code>false</code>). In questo modo, può essere "
+#~ "mostrata solamente la prima pagina con le ultime foto."
 
 #~ msgid "Options saved."
 #~ msgstr "Opzioni salvate"
@@ -293,9 +346,6 @@ msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
 
 #~ msgid "Pages:"
 #~ msgstr "Pagine:"
-
-#~ msgid "General Settings"
-#~ msgstr "Impostazioni Generali"
 
 #~ msgid "Custom Logo"
 #~ msgstr "Logo Personalizzato"

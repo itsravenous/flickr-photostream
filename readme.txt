@@ -3,7 +3,7 @@ Contributors: miro.mannino
 Donate link: http://miromannino.it
 Tags: photography, gallery, photo, flickr, photo stream, justified, grid
 Requires at least: 3.0
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
@@ -68,6 +68,14 @@ No. The plugin disables the justified grid algorithm if IE is lower than 9 (and 
 
 == Changelog ==
 
+= 1.2 =
+* Deleted the custom Lightbox. Now, to use a lightbox, you need to use a plugin that enable colorbox.
+* Added error message if the plugin doesn't find a plugin that enable colorbox.
+* Added a loading phase to show the images directly in a justified grid.
+* The images fade-in only when they are completely loaded.
+* Simplified the settings page.
+* Fixed an issue of the "IE8 or lower error message" in case of multiple gallery per page.
+
 = 1.1 =
 * Optional Lightbox
 * Option to use or not the pages
@@ -86,6 +94,12 @@ No. The plugin disables the justified grid algorithm if IE is lower than 9 (and 
 
 
 == Upgrade Notice ==
+
+= 1.2 =
+* The images fade-in only when they are completely loaded.
+* Added a loading phase to show the images directly in a justified grid.
+* Deleted the custom Lightbox. Now, to use a lightbox, you need to use a plugin that enable colorbox, in this way you are free to configure the style of the lightbox.
+* Simplified the settings page.
 
 = 1.1 =
 * Lightbox, support for multiple gallery instances with different options.

@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 1.1
+Version: 1.2
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -151,100 +151,129 @@ function flickr_photostream_setting(){
 	<div class="wrap">
 		<h2>Flickr Photostream</h2>
 
+		<h3><?php _e('Help', 'flickr-photostream' ); ?></h3>
+		<p>
+			<?php _e('To display a Photostream, with the default values, create a page and put the shortcode: <code>[flickrps]</code>', 'flickr-photostream' ); ?>
+		</p>
+		<p>
+			<?php _e('You can use the attributes to change the default settings:', 'flickr-photostream' ); ?>
+			<div>
+				<?php _e('For example:', 'flickr-photostream' ); ?>
+				<div style="margin-left: 30px">
+					<pre>[flickrps max_num_photos="50" no_pages="true"]</pre>
+					<?php _e('displays the latest 50 photos of the default user photostream, without any page navigation.', 'flickr-photostream' ); ?>
+				</div>
+			</div>
+		</p>
+
+		<h3><?php _e('Settings', 'flickr-photostream' ); ?></h3>
+
 		<form method="post" name="options" target="_self">
-			<table width="10%" cellpadding="10" class="form-table">
+			<table class="form-table">
 				<tr>
-					<th>
+					<th scope="row">
 						<label>Flickr API Key</label>
 					</th>
-					<td style="width: 10%">
+					<td>
+						<label for="flickr_photostream_APIKey">
 						<input type="text" name="flickr_photostream_APIKey" 
 							value="<?php echo($flickr_photostream_APIKey_saved); ?>"
+							style="margin-right:10px"
 						/> 	
-					</td>
-					<td>
 						<?php _e('Get your Flickr API Key from ', 'flickr-photostream' ); ?><a href="http://www.flickr.com/services/api/" target="_blank">Flickr API</a>
-					</td>
-				</tr>
-			</table>
-			
-			<h3><?php _e('Default values', 'flickr-photostream' ); ?></h3>
-			<table width="10%" cellpadding="10" class="form-table">
-				<tr>
-					<th>
-						<label><?php _e('User ID', 'flickr-photostream' ); ?></label>
-					</th>
-					<td style="width: 10%">
-						<input type="text" name="flickr_photostream_userID"
-							value="<?php echo($flickr_photostream_userID_saved); ?>"
-						/>
-					</td>
-					<td>
-						<?php _e('Get the User ID from ', 'flickr-photostream' ); ?><a href="http://idgettr.com/" target="_blank">idgettr</a>
+						<div><?php _e('You can\'t use an attribute to change this setting', 'flickr-photostream'); ?></div>
+						</label>
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label><?php _e('Images Height', 'flickr-photostream' ); ?></label>
-					</th>
+					<th scope="row"><?php _e('User ID', 'flickr-photostream' ); ?></th>
 					<td>
-						<input type="text" name="flickr_photostream_imagesHeight" 
-							value="<?php echo($flickr_photostream_imagesHeight_saved); ?>"
-						/> 	
+						<label for="flickr_photostream_userID">
+							<input type="text" name="flickr_photostream_userID"
+								value="<?php echo($flickr_photostream_userID_saved); ?>"
+								style="margin-right:10px"
+							/>
+							<?php _e('Get the User ID from ', 'flickr-photostream' ); ?><a href="http://idgettr.com/" target="_blank">idgettr</a>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'user_id' . __('</code> attribute to change this default value', 'flickr-photostream') ); ?></div>
+						</label>
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label><?php _e('Photos per page', 'flickr-photostream' ); ?></label>
-					</th>
+					<th scope="row"><?php _e('Images Height (in px)', 'flickr-photostream' ); ?></th>
 					<td>
-						<input type="text" name="flickr_photostream_maxPhotosPP" 
-							value="<?php echo($flickr_photostream_maxPhotosPP_saved); ?>"
-						/> 	
+						<label for="flickr_photostream_imagesHeight">
+							<input type="text" name="flickr_photostream_imagesHeight" 
+								value="<?php echo($flickr_photostream_imagesHeight_saved); ?>"
+							/>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'images_height' . __('</code> attribute to change this default value', 'flickr-photostream') ); ?></div>
+						</label>
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label><?php _e('Justify Last Row', 'flickr-photostream' ); ?></label>
-					</th>
+					<th scope="row"><?php _e('Photos per page', 'flickr-photostream' ); ?></th>
 					<td>
-						<input type="checkbox" name="flickr_photostream_justifyLastRow" 
-							<?php if($flickr_photostream_justifyLastRow_saved == 1){ echo('checked="checked"'); }; ?> 
-							value="1" 
-						/>
+						<label for="flickr_photostream_maxPhotosPP">
+							<input type="text" name="flickr_photostream_maxPhotosPP" 
+								value="<?php echo($flickr_photostream_maxPhotosPP_saved); ?>"
+							/>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'max_num_photos' . __('</code> attribute to change this default value', 'flickr-photostream') ); ?></div>
+						</label> 	
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label><?php _e('Fixed Height', 'flickr-photostream' ); ?></label>
-					</th>
+					<th scope="row"><?php _e('Justify Last Row', 'flickr-photostream' ); ?></th>
 					<td>
-						<input type="checkbox" name="flickr_photostream_fixedHeight" 
-							<?php if($flickr_photostream_fixedHeight_saved == 1){ echo('checked="checked"'); }; ?> 
-							value="1" 
-						/>
+						<label for="">
+							<input type="checkbox" name="flickr_photostream_justifyLastRow" 
+								<?php if($flickr_photostream_justifyLastRow_saved == 1){ echo('checked="checked"'); }; ?> 
+								value="1"
+								style="margin-right:5px"
+							/>
+							<?php _e('If enabled, the last images can be very bigger than the others.', 'flickr-photostream' ); ?></li>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'justify_last_row' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+						</label>
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label><?php _e('No pages', 'flickr-photostream' ); ?></label>
-					</th>
+					<th scope="row"><?php _e('Fixed Height', 'flickr-photostream' ); ?></th>
 					<td>
-						<input type="checkbox" name="flickr_photostream_noPages" 
-							<?php if($flickr_photostream_noPages_saved == 1){ echo('checked="checked"'); }; ?> 
-							value="1" 
-						/>
+						<label for="flickr_photostream_fixedHeight">
+							<input type="checkbox" name="flickr_photostream_fixedHeight" 
+								<?php if($flickr_photostream_fixedHeight_saved == 1){ echo('checked="checked"'); }; ?> 
+								value="1"
+								style="margin-right:5px"
+							/>
+							<?php _e('If enabled, each row has the same height, but the images will be cut more.', 'flickr-photostream' ); ?></li>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'fixed_height' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+						</label>
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label><?php _e('Lightbox', 'flickr-photostream' ); ?></label>
-					</th>
+					<th scope="row"><?php _e('No pages', 'flickr-photostream' ); ?></th>
 					<td>
+						<label for="flickr_photostream_noPages">
+							<input type="checkbox" name="flickr_photostream_noPages" 
+								<?php if($flickr_photostream_noPages_saved == 1){ echo('checked="checked"'); }; ?> 
+								value="1" 
+								style="margin-right:5px"
+							/>
+							<?php _e('If enabled, the photostream doesn\'t have a way to show the old images, but only the newer.', 'flickr-photostream' ); ?></li>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'no_pages' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><?php _e('Lightbox', 'flickr-photostream' ); ?></th>
+					<td>
+						<label for="flickr_photostream_lightbox">
 						<input type="checkbox" name="flickr_photostream_lightbox" 
 							<?php if($flickr_photostream_lightbox_saved == 1){ echo('checked="checked"'); }; ?> 
 							value="1" 
+							style="margin-right:5px"
 						/>
+						<?php echo( __('If enabled, the photo will be show using <i>colorbox</i>, make sure that you have installed it with a plugin (i.e. ', 'flickr-photostream' ) . '<a href="http://wordpress.org/extend/plugins/jquery-colorbox/">jQuery Colorbox</a>, <a href="http://wordpress.org/extend/plugins/lightbox-plus/">Lightbox Plus</a>)'); ?></li>
+							<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'lightbox' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+						</label>
 					</td>
 				</tr>
 			</table>
@@ -253,30 +282,6 @@ function flickr_photostream_setting(){
 				<input type="submit" name="Submit" value="<?php _e('Save Changes', 'flickr-photostream' ); ?>" />
 			</p>
 		</form>
-
-		<h3><?php _e('Help', 'flickr-photostream' ); ?></h3>
-		<p>
-			<?php _e('To display a Photostream, with the default values, create a page and put the shortcode: <code>[flickrps]</code>', 'flickr-photostream' ); ?>
-		</p>
-		<p>
-			<?php _e('You can use the following attributes to change the instances behaviour:', 'flickr-photostream' ); ?>
-			<ul>
-				<li><?php _e('<code>user_id</code>: the user ID (i.e. <code>51035555243@N01</code>)', 'flickr-photostream' ); ?></li>
-				<li><?php _e('<code>images_height</code>: height of the images (in px)', 'flickr-photostream' ); ?></li>
-				<li><?php _e('<code>max_num_photos</code>: max number of photos per page', 'flickr-photostream' ); ?></li>
-				<li><?php _e('<code>justify_last_row</code>: justify the last row (<code>true</code> or <code>false</code>). If <code>true</code> the last images can be very bigger than the others.', 'flickr-photostream' ); ?></li>
-				<li><?php _e('<code>fixed_height</code>: fix the height of the row (<code>true</code> or <code>false</code>)', 'flickr-photostream' ); ?></li>
-				<li><?php _e('<code>no_pages</code>: use or not the pages (<code>true</code> or <code>false</code>). In this way, you can show only the first page with the later photos.', 'flickr-photostream' ); ?></li>
-				<li><?php _e('<code>lightbox</code>: lightbox or not the images (<code>true</code> or <code>false</code>).', 'flickr-photostream' ); ?></li>
-			</ul>
-		</p>
-		<p>
-			<?php _e('For example:', 'flickr-photostream' ); ?>
-			<div style="margin-left: 30px">
-				<pre>[flickrps max_num_photos="50" no_pages="true"]</pre>
-				<?php _e('displays the latest 50 photos of the default user photostream, without any page navigation.', 'flickr-photostream' ); ?>
-			</div>
-		</p>
 	</div>
 
 <?php 
