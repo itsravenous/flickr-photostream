@@ -8,33 +8,43 @@ Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 
-Just your beautiful Flickr Photostream. In your Blog, in a Justified Grid.
+Just your beautiful Flickr Photostream. In a Justified Grid.
 
 == Description ==
 
 Plugin that allows you to show your Flickr Photostream in your blog.
 
 Awesome thumbnails disposition with a **justified grid**, calculated by a fast Javascript algorithm!
- 
-You can configure the height of the rows to have a grid that can be like the justified grid of Flickr or of Google+.
-But, you can do more! For example you can configure the margin between the images, or decide if you want to justify the last row or not!
+
+
+Style
+--------------
+
+You can *configure the height of the rows* to have a grid that can be *like the justified grid of Flickr or of Google+*.
+But, you can do more! For example you can *configure the margin between the images*, or decide if you want to justify the last row or not!
 You can configure the plugin to create rows with fixed height, or to create rows where the height depends on the bigger images.
+You can decide if you want the **captions**, to show the titles of the photos, they appear when the mouse is over the photo.
 
-You can configure a gallery to show photos with a link to Flickr or with a Lightbox (you must have a Colorbox plugin installed).
+You can configure a gallery to show photos with a link to Flickr or with a **Lightbox** (you must have a Colorbox plugin installed).
 
-You can configure the maximum number of photos per page, then, you can navigate between various pages. Or if you want, you can show only the latest photos.
+You can configure the *maximum number of photos per page*, then, you can navigate between various pages. Or if you want, you can show only the latest photos.
 
-The plugin chooses the right resolution for the image, using the "Flickr size suffixes", no small images are resized to be bigger and no very big images are resized to be very smaller!
+The plugin chooses the **right resolution for the image**, using the "Flickr size suffixes", no small images are resized to be bigger and no very big images are resized to be very smaller!
 
-See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
-
-Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
 
 Future improvements
 -------------------
 
 In the future I'll release another plugin, with a different name, that can show sets, albums, etc...
 
+
+Live Demo
+---------
+
+See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
+
+
+Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
 
 == Installation ==
 
