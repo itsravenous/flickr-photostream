@@ -104,16 +104,10 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 == Upgrade Notice ==
 
 = 1.3 =
-* Algorithm improved, faster and now Internet Explorer compatible
-* Added captions
-* Now, you can add multiple instance on the same page
-* Fixed some errors and usability improved
+* Algorithm improved, faster and now Internet Explorer compatible. Added captions. Now, you can add multiple instance on the same page. Fixed some errors and usability improved.
 
 = 1.2 =
-* The images fade-in only when they are completely loaded.
-* Added a loading phase to show the images directly in a justified grid.
-* Deleted the custom Lightbox. Now, to use a lightbox, you need to use a plugin that enable colorbox, in this way you are free to configure the style of the lightbox.
-* Simplified the settings page.
+* The images fade-in only when they are completely loaded. Added a loading phase to show the images directly in a justified grid. Deleted the custom Lightbox. Now, to use a lightbox, you need to use a plugin that enable colorbox, in this way you are free to configure the style of the lightbox. Simplified the settings page.
 
 = 1.1 =
 * Lightbox, support for multiple gallery instances with different options.
@@ -122,4 +116,4 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 * Justified grid algorithm disabled for IE8 or lower. Fixed some css issues. Speed improvements on images loading.
 
 = 1.0 =
-* First version
+* First version.
