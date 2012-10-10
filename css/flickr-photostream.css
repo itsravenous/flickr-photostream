@@ -1,6 +1,6 @@
 /* 
 Flickr Photostream
-Version: 1.2
+Version: 1.3
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -21,29 +21,25 @@ You should have received a copy of the GNU General Public License along with Fli
 Photostream Wordpress Plugin.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-.page-link .nav-flickrps-prev, .page-link .nav-flickrps-next { display: inline-block; }
-.flickrps-image-un {
-	display: inline-block;
-	vertical-align: top;
-	margin: 0px 2px 4px 2px;
-	overflow: hidden;
-}
-.flickrps-row {
-	white-space: nowrap;	
-	overflow:hidden;
-	margin-bottom: 4px;
-}
+html { overflow-y: scroll; } /*to prevent the loop when the scrollbar appear and disappear*/
+
+.page-link .nav-flickrps-next, .page-link .nav-flickrps-prev { display: inline-block; }
+
 .flickrps-container { width: 100%; }
 .flickrps-container .flickrps-image {
-	display: inline-block;
-	vertical-align: top;
-	margin-left: 4px;
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 0px;
 }
 .flickrps-container .flickrps-image img {
+    border: none;
     opacity: 0;
+    filter:alpha(opacity=0);
 }
 .flickrps-container .flickrps-image img { max-width: 100%; }
 .flickrps-container { margin-bottom: 10px; }
+
 .flickrps-meta, .flickrps-images { display: none; }
 
 .flickrps-loading-img{
@@ -60,4 +56,33 @@ Photostream Wordpress Plugin.  If not, see <http://www.gnu.org/licenses/>.
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+.flickrps-row {
+    position: relative;
+    white-space: nowrap;    
+    overflow:hidden;
+    margin-bottom: 4px;
+}
+
+.flickrps-image {   
+    position:relative;
+}
+
+.flickrps-image a {
+    text-decoration: none;
+}
+
+.flickrps-image-label {
+    white-space: normal;
+    font: normal 12px arial;
+    background: #000;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 5px 5px 10px 8px;
+    text-align: left;
+    opacity: 0;
+    filter:alpha(opacity=0); //IE8 or Earlier
 }

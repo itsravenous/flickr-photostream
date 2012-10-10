@@ -8,17 +8,23 @@ Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 
-Just your beautiful Flickr Photostream. In a Justified Grid.
+Just your beautiful Flickr Photostream. In your Blog, in a Justified Grid.
 
 == Description ==
 
-Plugin that allows you to show your Flickr Photostream in your blog. 
-Awesome thumbnails disposition with a **justified grid**, with a Javascript algorithm, for a fast redraw. 
-Various settings to **configure the height of the rows** and the behaviour of the last.
-You can configure a gallery to show photos with a link to Flickr or with a Lightbox (Colorbox).
-You can configure the number of photos per page, then, you can navigate between various pages. 
-You can configure the plugin to create fixed height rows or to create rows where the height depends on the images. 
-The plugin chooses the right resolution for the image, using the Flickr size suffixes (for example, if you decide to justify the last row, the images in the last row can be bigger than the others, so for these photos will be used suffixes to have larger photos).
+Plugin that allows you to show your Flickr Photostream in your blog.
+
+Awesome thumbnails disposition with a **justified grid**, calculated by a fast Javascript algorithm!
+ 
+You can configure the height of the rows to have a grid that can be like the justified grid of Flickr or of Google+.
+But, you can do more! For example you can configure the margin between the images, or decide if you want to justify the last row or not!
+You can configure the plugin to create rows with fixed height, or to create rows where the height depends on the bigger images.
+
+You can configure a gallery to show photos with a link to Flickr or with a Lightbox (you must have a Colorbox plugin installed).
+
+You can configure the maximum number of photos per page, then, you can navigate between various pages. Or if you want, you can show only the latest photos.
+
+The plugin chooses the right resolution for the image, using the "Flickr size suffixes", no small images are resized to be bigger and no very big images are resized to be very smaller!
 
 See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
 
@@ -27,36 +33,22 @@ Remember that this plugin is not an official Flickr® plugin, any help will be g
 Future improvements
 -------------------
 
-- Optional error message for IE8 or lower
-- Order for most recent, popular, commented, rated
-- Show photos per Set, Album or Group
-
-Thanks to [MacItaly](http://wordpress.org/support/profile/macitaly) for the improvements suggestions.
-
-Compatibility
--------------
-
-**Compatible Browsers**: Chrome, Firefox, Safari, Opera, IE9, Chrome for Android, Android Browser
-
-**Incompatible browsers**: IE8 or lower
+In the future I'll release another plugin, with a different name, that can show sets, albums, etc...
 
 
 == Installation ==
 
 1. Upload the folder `flickr-photostream` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Create a page with the shortcode `[flickrps]`
+3. Configure the plugin settings through the 'Settings > Flickr Photostream' page.
+3. Create a page with the shortcode `[flickrps]` (you can add attributes in this shortcode, to have settings that are different than the default)
 
 
 == Frequently Asked Questions ==
 
-= Can I configure the plugin to show the titles?  =
+= Can I have in the same blog two photostream of different Flickr's users?  =
 
-No. I will do this in the future.
-
-= Does the justified grid algorithm works in IE8 or lower? =
-
-No. The plugin disables the justified grid algorithm if IE is lower than 9 (and it shows an error message).
+Yes, you must use the shortcode attributes (in this case `user_id`) to have settings that are different than the default.
 
 
 == Screenshots ==
@@ -64,9 +56,18 @@ No. The plugin disables the justified grid algorithm if IE is lower than 9 (and 
 1. A tipical Photosream
 2. A Photostream with more pages
 3. The settings
+3. The captions
 
 
 == Changelog ==
+
+= 1.3 =
+* Algorithm improved, faster and now Internet Explorer compatible
+* Added captions
+* Now, you can add multiple instance on the same page
+* Now, the CSS rules force the scrollbar to be always visible, this to prevent loops
+* Fixed some errors
+* Usability improved
 
 = 1.2 =
 * Deleted the custom Lightbox. Now, to use a lightbox, you need to use a plugin that enable colorbox.
@@ -94,6 +95,12 @@ No. The plugin disables the justified grid algorithm if IE is lower than 9 (and 
 
 
 == Upgrade Notice ==
+
+= 1.3 =
+* Algorithm improved, faster and now Internet Explorer compatible
+* Added captions
+* Now, you can add multiple instance on the same page
+* Fixed some errors and usability improved
 
 = 1.2 =
 * The images fade-in only when they are completely loaded.

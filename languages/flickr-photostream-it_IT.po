@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flickr Photostream\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-07 19:48+0100\n"
-"PO-Revision-Date: 2012-09-07 19:53+0100\n"
+"POT-Creation-Date: 2012-10-10 15:48+0100\n"
+"PO-Revision-Date: 2012-10-10 15:48+0100\n"
 "Last-Translator: Miro Mannino <miro.mannino@gmail.com>\n"
 "Language-Team: Miro Mannino <miro.mannino@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,134 +15,158 @@ msgstr ""
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../flickr-photostream-setting.php:99
+#: ../flickr-photostream-setting.php:106
 msgid "API Key is not valid"
 msgstr "API Key non valida"
 
-#: ../flickr-photostream-setting.php:106
+#: ../flickr-photostream-setting.php:113
 msgid "Invalid UserID"
 msgstr "ID Utente non valido"
 
-#: ../flickr-photostream-setting.php:113
-msgid "The 'Images Height' must be a value greater than 30"
+#: ../flickr-photostream-setting.php:120
+msgid "The 'Images Height' field must have a value greater than or equal to 30"
 msgstr "Il campo 'Altezza Immagini' deve essere un valore maggiore o uguale a 30"
 
-#: ../flickr-photostream-setting.php:118
-msgid "The 'photos per page' must be a value greater than 0"
-msgstr "Il campo 'foto per pagina' deve essere un valore maggiore o uguale a 0"
+#: ../flickr-photostream-setting.php:125
+msgid "The 'Photos per page' field must have a value greater than 0"
+msgstr "Il campo 'Foto per pagina' deve avere un valore maggiore di 0"
 
-#: ../flickr-photostream-setting.php:136
+#: ../flickr-photostream-setting.php:135
+msgid "The 'Margins' field must have a value greater than 0, and not greater than 30"
+msgstr "Il campo 'Margini tra le immagini' deve avere un valore maggiore di 0, e non più grande di 30"
+
+#: ../flickr-photostream-setting.php:151
 msgid "Settings updated."
 msgstr "Opzioni salvate"
 
-#: ../flickr-photostream-setting.php:143
+#: ../flickr-photostream-setting.php:158
 msgid "Invalid values, the settings have not been updated"
 msgstr "Valori non validi, le opzioni non sono state salvate"
 
-#: ../flickr-photostream-setting.php:154
+#: ../flickr-photostream-setting.php:169
 msgid "Help"
 msgstr "Aiuto"
 
-#: ../flickr-photostream-setting.php:156
+#: ../flickr-photostream-setting.php:171
 msgid "To display a Photostream, with the default values, create a page and put the shortcode: <code>[flickrps]</code>"
 msgstr "Per mostrare il Photostream, creare una pagina inserendo il seguente shortcode: <code>[flickrps]</code>"
 
-#: ../flickr-photostream-setting.php:159
-msgid "You can use the attributes to change the default settings:"
-msgstr "Puoi utilizzare gli attributi per modificare la configurazione di default"
+#: ../flickr-photostream-setting.php:174
+msgid "You can use the attributes to have settings that are different than the default:"
+msgstr "Puoi utilizzare gli attributi per avere impostazioni che sono diverse rispetto a quelle di default:"
 
-#: ../flickr-photostream-setting.php:161
+#: ../flickr-photostream-setting.php:176
 msgid "For example:"
 msgstr "Per esempio:"
 
-#: ../flickr-photostream-setting.php:164
-msgid "displays the latest 50 photos of the default user photostream, without any page navigation."
-msgstr "mostra le ultime 50 foto del photostream dell'utente di default, senza nessuna navigazione tra pagine."
+#: ../flickr-photostream-setting.php:179
+msgid "displays the latest 50 photos of the default user photostream, without any page navigation. (the other settings are the default)"
+msgstr "mostra le ultime 50 foto del photostream dell'utente di default, senza nessuna navigazione tra pagine. (le altre impostazioni sono quelle di default)"
 
-#: ../flickr-photostream-setting.php:169
-msgid "Settings"
-msgstr "Impostazioni"
+#: ../flickr-photostream-setting.php:187
+msgid "Global Settings"
+msgstr "Impostazioni Globali"
 
-#: ../flickr-photostream-setting.php:183
+#: ../flickr-photostream-setting.php:200
 msgid "Get your Flickr API Key from "
 msgstr "Ottieni la tua Flickr API Key da "
 
-#: ../flickr-photostream-setting.php:184
+#: ../flickr-photostream-setting.php:201
 msgid "You can't use an attribute to change this setting"
 msgstr "Non puoi utilizzare un attributo per modificare questa impostazione"
 
-#: ../flickr-photostream-setting.php:189
+#: ../flickr-photostream-setting.php:207
+msgid "Default Settings"
+msgstr "Impostazioni di Default"
+
+#: ../flickr-photostream-setting.php:211
 msgid "User ID"
 msgstr "ID Utente"
 
-#: ../flickr-photostream-setting.php:196
+#: ../flickr-photostream-setting.php:218
 msgid "Get the User ID from "
 msgstr "Ottieni l'ID Utente da "
 
-#: ../flickr-photostream-setting.php:197
-#: ../flickr-photostream-setting.php:208
 #: ../flickr-photostream-setting.php:219
-#: ../flickr-photostream-setting.php:232
-#: ../flickr-photostream-setting.php:245
-#: ../flickr-photostream-setting.php:258
-#: ../flickr-photostream-setting.php:271
+#: ../flickr-photostream-setting.php:230
+#: ../flickr-photostream-setting.php:241
+#: ../flickr-photostream-setting.php:255
+#: ../flickr-photostream-setting.php:269
+#: ../flickr-photostream-setting.php:283
+#: ../flickr-photostream-setting.php:297
+#: ../flickr-photostream-setting.php:311
+#: ../flickr-photostream-setting.php:323
 msgid "You can use the <code>"
 msgstr "Puoi utilizzare l'attributo <code>"
 
-#: ../flickr-photostream-setting.php:197
-#: ../flickr-photostream-setting.php:208
 #: ../flickr-photostream-setting.php:219
+#: ../flickr-photostream-setting.php:230
+#: ../flickr-photostream-setting.php:241
+#: ../flickr-photostream-setting.php:323
 msgid "</code> attribute to change this default value"
 msgstr "</code> per cambiare il valore di default"
 
-#: ../flickr-photostream-setting.php:202
+#: ../flickr-photostream-setting.php:224
 msgid "Images Height (in px)"
 msgstr "Altezza Immagini (in px)"
 
-#: ../flickr-photostream-setting.php:213
-msgid "Photos per page"
-msgstr "Foto per pagina"
+#: ../flickr-photostream-setting.php:235
+msgid "Maximum number of photos per page"
+msgstr "Massimo numero di foto per pagina"
 
-#: ../flickr-photostream-setting.php:224
+#: ../flickr-photostream-setting.php:246
 msgid "Justify Last Row"
 msgstr "Giustifica l'ultima riga"
 
-#: ../flickr-photostream-setting.php:231
-msgid "If enabled, the last images can be very bigger than the others."
-msgstr "Se abilitato, le immagini dell'ultima riga potranno essere molto più grandi rispetto alle altre."
+#: ../flickr-photostream-setting.php:254
+msgid "If enabled, the last row will be justified. In this case the last images can be very bigger than the others."
+msgstr "Se abilitato, le immagini dell'ultima riga saranno giustificate. In questo caso le ultime immagini potranno essere molto più grandi rispetto alle altre."
 
-#: ../flickr-photostream-setting.php:232
-#: ../flickr-photostream-setting.php:245
-#: ../flickr-photostream-setting.php:258
-#: ../flickr-photostream-setting.php:271
+#: ../flickr-photostream-setting.php:255
+#: ../flickr-photostream-setting.php:269
+#: ../flickr-photostream-setting.php:283
+#: ../flickr-photostream-setting.php:297
+#: ../flickr-photostream-setting.php:311
 msgid "</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)"
-msgstr "<code> per cambiare il valore di default (con i valori <code>true</code> o <code>false</code>)."
+msgstr "</code> per cambiare il valore di default (con i valori <code>true</code> o <code>false</code>)."
 
-#: ../flickr-photostream-setting.php:237
+#: ../flickr-photostream-setting.php:260
 msgid "Fixed Height"
 msgstr "Altezza fissata"
 
-#: ../flickr-photostream-setting.php:244
+#: ../flickr-photostream-setting.php:268
 msgid "If enabled, each row has the same height, but the images will be cut more."
 msgstr "Se abilitato, ogni riga avrà la stessa altezza, quindi le immagini potranno essere maggiormente tagliate."
 
-#: ../flickr-photostream-setting.php:250
+#: ../flickr-photostream-setting.php:274
 msgid "No pages"
 msgstr "No pagine"
 
-#: ../flickr-photostream-setting.php:257
-msgid "If enabled, the photostream doesn't have a way to show the old images, but only the newer."
-msgstr "Se abilitato, il photostream non avrà modo di mostrare le immagini più vecchie."
+#: ../flickr-photostream-setting.php:282
+msgid "If enabled, no navigation button will be shown, in this way you will show only the newer photos.<br/><i>Use only one instance per page with this settings disabled!</i>"
+msgstr "Se abilitato, non verrà mostrato nessun pulsante di navigazione, in questo modo verranno mostrate solo le foto più recenti.<br/><i>Per ogni pagina, utilizza solo un istanza con questa opzione disabilitata!</i>"
 
-#: ../flickr-photostream-setting.php:263
+#: ../flickr-photostream-setting.php:288
 msgid "Lightbox"
 msgstr "Lightbox"
 
-#: ../flickr-photostream-setting.php:270
-msgid "If enabled, the photo will be show using <i>colorbox</i>, make sure that you have installed it with a plugin (i.e. "
+#: ../flickr-photostream-setting.php:296
+msgid "If enabled, the photo will be shown using <i>colorbox</i>, make sure that you have installed it with a plugin (i.e. "
 msgstr "Se abilitato, le foto verranno mostrate utilizzando <i>colorbox</i>, assicurati di averlo installato con un plugin (i.e. "
 
-#: ../flickr-photostream-setting.php:278
+#: ../flickr-photostream-setting.php:302
+msgid "Captions"
+msgstr "Etichette"
+
+#: ../flickr-photostream-setting.php:310
+msgid "If enabled, the title of the photo will be shown over the image when the mouse is over. <i>Captions, with the images height too short, become aesthetically unpleasing</i>"
+msgstr "Se abilitata, il titolo della foto verrà mostrato sopra l'immagine quando il mouse sarà sopra di essa. <i>Le etichette, quando l'altezza delle immagini è troppo piccola, diventano esteticamente sgradevoli</i>"
+
+#: ../flickr-photostream-setting.php:316
+msgid "Margin between the images"
+msgstr "Margine tra le immagini"
+
+#: ../flickr-photostream-setting.php:330
 msgid "Save Changes"
 msgstr "Salva le modifiche"
 
@@ -150,13 +174,35 @@ msgstr "Salva le modifiche"
 msgid "Flickr Photostream can't be activated: the cache Folder is not writable"
 msgstr "Flickr Photostream non può essere attivato: la cartella chache non è scrivibile"
 
-#: ../flickr-photostream.php:174
+#: ../flickr-photostream.php:136
+msgid "Invalid Flickr API Key"
+msgstr "Flickr API Key non valida"
+
+#: ../flickr-photostream.php:140
+msgid "The user not exists"
+msgstr "L'utente non esiste"
+
+#: ../flickr-photostream.php:143
+msgid "No photos"
+msgstr "Nessuna foto"
+
+#: ../flickr-photostream.php:200
 msgid "<span class=\"meta-nav\">&larr;</span> Older photos"
 msgstr "<span class=\"meta-nav\">&larr;</span> Foto meno recenti"
 
-#: ../flickr-photostream.php:181
+#: ../flickr-photostream.php:207
 msgid "Newer photos <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "Photos per page"
+#~ msgstr "Foto per pagina"
+
+#~ msgid ""
+#~ "If enabled, the photostream doesn't have a way to show the old images, "
+#~ "but only the newer."
+#~ msgstr ""
+#~ "Se abilitato, il photostream non avrà modo di mostrare le immagini più "
+#~ "vecchie."
 
 #~ msgid "Default values"
 #~ msgstr "Valori di default"
@@ -167,9 +213,6 @@ msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
 
 #~ msgid "<code>images_height</code>: height of the images (in px)"
 #~ msgstr "<code>images_height</code>: altezza delle immagini (in px)"
-
-#~ msgid "<code>max_num_photos</code>: max number of photos per page"
-#~ msgstr "<code>max_num_photos</code>: massimo numero di foto per pagina"
 
 #~ msgid ""
 #~ "<code>justify_last_row</code>: justify the last row (<code>true</code> or "
