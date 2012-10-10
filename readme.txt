@@ -32,7 +32,10 @@ The plugin chooses the **right resolution for the image**, using the "Flickr siz
 Future improvements
 -------------------
 
-In the future I'll release another plugin, with a different name, that can show sets, albums, etc...
+In the future I'll release another plugin, based on this one, with a different name, that can show photos, sets, albums and group.
+
+
+The plugin is available in English and Italian.
 
 
 See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
