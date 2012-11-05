@@ -50,6 +50,8 @@ Remember that this plugin is not an official Flickr® plugin, any help will be g
 3. Configure the plugin settings through the 'Settings > Flickr Photostream' page.
 3. Create a page with the shortcode `[flickrps]` (you can add attributes in this shortcode, to have settings that are different than the default)
 
+4. (optional) Install a Colorbox plugin to show the photostream with in a lightbox mode. (i.e. [JQuery Colorbox](http://www.techotronic.de/plugins/jquery-colorbox/))
+
 
 == Frequently Asked Questions ==
 
@@ -67,6 +69,10 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 
 
 == Changelog ==
+
+= 1.4 =
+* Now the plugin uses the [Justified Gallery](http://miromannino.it/projects/justified-gallery/) JQuery plugin to build the justified layout.
+* Corrected some bugs in the default settings
 
 = 1.3 =
 * Algorithm improved, faster and now Internet Explorer compatible
@@ -102,6 +108,9 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 
 
 == Upgrade Notice ==
+
+= 1.4 =
+* Now the plugin uses the [Justified Gallery](http://miromannino.it/projects/justified-gallery/) JQuery plugin to build the justified layout.
 
 = 1.3 =
 * Algorithm improved, faster and now Internet Explorer compatible. Added captions. Now, you can add multiple instance on the same page. Fixed some errors and usability improved.

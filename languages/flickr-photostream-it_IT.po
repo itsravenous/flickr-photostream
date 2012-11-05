@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flickr Photostream\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-10 15:48+0100\n"
-"PO-Revision-Date: 2012-10-10 15:48+0100\n"
+"POT-Creation-Date: 2012-11-05 10:39+0100\n"
+"PO-Revision-Date: 2012-11-05 10:39+0100\n"
 "Last-Translator: Miro Mannino <miro.mannino@gmail.com>\n"
 "Language-Team: Miro Mannino <miro.mannino@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -174,23 +174,23 @@ msgstr "Salva le modifiche"
 msgid "Flickr Photostream can't be activated: the cache Folder is not writable"
 msgstr "Flickr Photostream non può essere attivato: la cartella chache non è scrivibile"
 
-#: ../flickr-photostream.php:136
+#: ../flickr-photostream.php:137
 msgid "Invalid Flickr API Key"
 msgstr "Flickr API Key non valida"
 
-#: ../flickr-photostream.php:140
+#: ../flickr-photostream.php:141
 msgid "The user not exists"
 msgstr "L'utente non esiste"
 
-#: ../flickr-photostream.php:143
+#: ../flickr-photostream.php:147
 msgid "No photos"
 msgstr "Nessuna foto"
 
-#: ../flickr-photostream.php:200
+#: ../flickr-photostream.php:216
 msgid "<span class=\"meta-nav\">&larr;</span> Older photos"
 msgstr "<span class=\"meta-nav\">&larr;</span> Foto meno recenti"
 
-#: ../flickr-photostream.php:207
+#: ../flickr-photostream.php:223
 msgid "Newer photos <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
 

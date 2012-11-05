@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 1.3
+Version: 1.4
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -75,13 +75,13 @@ function flickr_photostream_setting(){
 	$flickr_photostream_noPages_default = '1';
 	$flickr_photostream_lightbox_default = '0';
 	$flickr_photostream_captions_default = '1';
-	$flickr_photostream_margins_saved = '1';
+	$flickr_photostream_margins_default = '1';
 
 
 	//Get Values
 	$flickr_photostream_userID_saved = get_option('$flickr_photostream_userID', "");
 	$flickr_photostream_APIKey_saved = get_option('$flickr_photostream_APIKey', "");
-	$flickr_photostream_imagesHeight_saved = (int)get_option('$flickr_photostream_imagesHeight', $flickr_photostream_imagesHeight_saved);
+	$flickr_photostream_imagesHeight_saved = (int)get_option('$flickr_photostream_imagesHeight', $flickr_photostream_imagesHeight_default);
 	$flickr_photostream_maxPhotosPP_saved = (int)get_option('$flickr_photostream_maxPhotosPP', $flickr_photostream_maxPhotosPP_default);
 	$flickr_photostream_justifyLastRow_saved = (int)get_option('$flickr_photostream_justifyLastRow', $flickr_photostream_justifyLastRow_default);
 	$flickr_photostream_fixedHeight_saved = (int)get_option('$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_default);
