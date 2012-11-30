@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream
-Version: 1.4
+Version: 1.5
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 

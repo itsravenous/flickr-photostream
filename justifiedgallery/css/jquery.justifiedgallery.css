@@ -1,6 +1,6 @@
 /* 
 Justified Gallery
-Version: 1.0
+Version: 1.0.2
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -26,7 +26,6 @@ html { overflow-y: scroll; } /*to prevent the loop when the scrollbar appear and
 .justifiedGallery .jg-image img {
     border: none;
     display: none;
-    max-width: 100%;
 }
 .justifiedGallery .jg-image a { text-decoration: none; }
 .justifiedGallery .jg-image-label {
@@ -40,7 +39,7 @@ html { overflow-y: scroll; } /*to prevent the loop when the scrollbar appear and
     padding: 5px 5px 10px 8px;
     text-align: left;
     opacity: 0;
-    filter:alpha(opacity=0); //IE8 or Earlier
+    filter:alpha(opacity=0); /* IE8 or Earlier */
 }
 .justifiedGallery .jg-loading-img{
     margin: auto;
