@@ -70,6 +70,9 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 
 == Changelog ==
 
+= 1.5 =
+* updated Justified Gallery to version 1.0.2
+
 = 1.4 =
 * Now the plugin uses the [Justified Gallery](http://miromannino.it/projects/justified-gallery/) JQuery plugin to build the justified layout.
 * Corrected some bugs in the default settings
@@ -108,6 +111,9 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 
 
 == Upgrade Notice ==
+
+= 1.5 =
+* updated Justified Gallery to version 1.0.2
 
 = 1.4 =
 * Now the plugin uses the [Justified Gallery](http://miromannino.it/projects/justified-gallery/) JQuery plugin to build the justified layout.
