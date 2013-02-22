@@ -1,6 +1,6 @@
 === Flickr Photostream ===
 Contributors: miro.mannino
-Donate link: http://miromannino.it
+Donate link: http://miromannino.com
 Tags: photography, gallery, photo, flickr, photo stream, justified, grid
 Requires at least: 3.0
 Tested up to: 3.4.2
@@ -38,7 +38,7 @@ In the future I'll release another plugin, based on this one, with a different n
 The plugin is available in English and Italian.
 
 
-See a Live Demo in [Miro Mannino's Blog](http://miromannino.it/my-photos)
+See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
 
 
 Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
@@ -74,7 +74,7 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 * updated Justified Gallery to version 1.0.2
 
 = 1.4 =
-* Now the plugin uses the [Justified Gallery](http://miromannino.it/projects/justified-gallery/) JQuery plugin to build the justified layout.
+* Now the plugin uses the [Justified Gallery](http://miromannino.com/projects/justified-gallery/) JQuery plugin to build the justified layout.
 * Corrected some bugs in the default settings
 
 = 1.3 =
@@ -116,7 +116,7 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 * updated Justified Gallery to version 1.0.2
 
 = 1.4 =
-* Now the plugin uses the [Justified Gallery](http://miromannino.it/projects/justified-gallery/) JQuery plugin to build the justified layout.
+* Now the plugin uses the [Justified Gallery](http://miromannino.com/projects/justified-gallery/) JQuery plugin to build the justified layout.
 
 = 1.3 =
 * Algorithm improved, faster and now Internet Explorer compatible. Added captions. Now, you can add multiple instance on the same page. Fixed some errors and usability improved.
