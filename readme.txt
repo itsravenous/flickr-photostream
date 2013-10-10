@@ -12,7 +12,7 @@ Just your beautiful Flickr Photostream. In a Justified Grid.
 
 == Description ==
 
-Plugin that allows you to show your Flickr Photostream in your blog.
+Plugin that allows you to show your Flickr **Photostream**, **Photosets** and **Galleries** in your blog.
 
 Awesome thumbnails disposition with a **justified grid**, calculated by a fast Javascript algorithm!
 
@@ -22,7 +22,10 @@ You can also configure a gallery to show photos with a link to Flickr or with a 
 
 Always high quality thumbnails! The plugin chooses the **right resolution for the image**, using the "Flickr size suffixes", no small images are resized to be bigger and no big images are resized to be smaller!
 
-Features:
+Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
+Available in English and Italian.
+
+ = Features: = 
 
  * A gallery with the same style of Flickr or Google+.
  * Fast and light. Also uses a cache to load galleries instantly.
@@ -34,9 +37,7 @@ Features:
  * Customizable style, you need just to change a CSS.
  * Pagination. Decide if you want to show the newer photos or not.
 
-
-Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
-Available in English and Italian.
+= Live Demo = 
 
 See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
 
