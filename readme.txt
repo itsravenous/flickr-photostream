@@ -53,7 +53,7 @@ See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
 
 == Frequently Asked Questions ==
 
-= Why I see a gallery of placeholder where each thumbnail is void? And why clicking on the thumbnail the correct image is shown?
+= Why I see a gallery of placeholder where each thumbnail is void? And why clicking on the thumbnail the correct image is shown? =
 
 In a word: Photon. Make sure that you don't have it. It changes the picture source URLs, in this way the plugin can't know where to take the pictures.
 
@@ -84,7 +84,7 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 * Some bugs fixed, thanks to nammourdesigns.
 * New error detection system, now it's easier to find the wrong settings
 * pagination settings has been changed, to be more understandable
-* Justified Gallery updated to version 1.0.3
+* Justified Gallery updated to version 1.0.4
 
 = 1.5 =
 * updated Justified Gallery to version 1.0.2
