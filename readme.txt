@@ -1,9 +1,9 @@
 === Flickr Photostream ===
 Contributors: miro.mannino
-Donate link: http://miromannino.com
-Tags: photography, gallery, photo, flickr, photo stream, justified, grid
+Donate link: http://miromannino.com/projects/flickr-photostream/#helptheproject
+Tags: photography, gallery, photo, flickr, photostream, set, justified, grid
 Requires at least: 3.0
-Tested up to: 3.4.2
+Tested up to: 3.6.1
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
@@ -16,48 +16,53 @@ Plugin that allows you to show your Flickr Photostream in your blog.
 
 Awesome thumbnails disposition with a **justified grid**, calculated by a fast Javascript algorithm!
 
-You can **configure the height of the rows** to have a grid that can be *like the justified grid of Flickr or of Google+*. But, you can do more! For example you can *configure the margin between the images*, or decide if you want to justify the last row or not!
+You can **configure the height of the rows** to have a grid that can be *like the justified grid of Flickr or of Google+*. But, you can do more! For example you can *configure the margin between the images*, create rows with fixed height, or decide if you want to justify the last row or not!
 
-You can configure the plugin to create rows with fixed height, or to create rows where the height depends on the bigger images.
+You can also configure a gallery to show photos with a link to Flickr or with a **Lightbox** (you must have a Colorbox plugin installed).
 
-You can decide if you want the **captions**, to show the titles of the photos, they appear when the mouse is over the photo.
+Always high quality thumbnails! The plugin chooses the **right resolution for the image**, using the "Flickr size suffixes", no small images are resized to be bigger and no big images are resized to be smaller!
 
-You can configure a gallery to show photos with a link to Flickr or with a **Lightbox** (you must have a Colorbox plugin installed).
+Features:
 
-You can configure the *maximum number of photos per page*, then, you can **navigate between various pages**. Or if you want, you can show only the latest photos.
-
-The plugin chooses the **right resolution for the image**, using the "Flickr size suffixes", no small images are resized to be bigger and no very big images are resized to be very smaller!
-
-
-Future improvements
--------------------
-
-In the future I'll release another plugin, based on this one, with a different name, that can show photos, sets, albums and group.
-
-
-The plugin is available in English and Italian.
-
-
-See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
+ * A gallery with the same style of Flickr or Google+.
+ * Fast and light. Also uses a cache to load galleries instantly.
+ * You can show photos from your Flickr Photostream, from a Photoset, or Gallery.
+ * You can create multiple galleries with different settings, also in the same page.
+ * Customizable image sizes, always with a justified disposition.
+ * Photo titles shown when the mouse is above.
+ * Decide if use a lightbox (Colorbox) to show the original photo, or Flickr.
+ * Customizable style, you need just to change a CSS.
+ * Pagination. Decide if you want to show the newer photos or not.
 
 
 Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
+Available in English and Italian.
+
+See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
+
 
 == Installation ==
 
 1. Upload the folder `flickr-photostream` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure the plugin settings through the 'Settings > Flickr Photostream' page.
-3. Create a page with the shortcode `[flickrps]` (you can add attributes in this shortcode, to have settings that are different than the default)
-
-4. (optional) Install a Colorbox plugin to show the photostream with in a lightbox mode. (i.e. [JQuery Colorbox](http://www.techotronic.de/plugins/jquery-colorbox/))
-
+4. Set the API key and the User ID
+5. Create a page with the shortcode `[flickrps]` to show the specified user photostream (you can add attributes in the shortcode, to show set, gallery or simply to have settings that are different than the default).
+6. (optional) If you want to use a lightbox, install a Colorbox plugin (i.e. [JQuery Colorbox](http://www.techotronic.de/plugins/jquery-colorbox/)). Then, check that in the settings the lightbox option is enabled.
 
 == Frequently Asked Questions ==
 
+= Why I see a gallery of placeholder where each thumbnail is void? And why clicking on the thumbnail the correct image is shown?
+
+In a word: Photon. Make sure that you don't have it. It changes the picture source URLs, in this way the plugin can't know where to take the pictures.
+
 = Can I have in the same blog two photostream of different Flickr's users?  =
 
-Yes, you must use the shortcode attributes (in this case `user_id`) to have settings that are different than the default.
+Yes, you must use the shortcode attributes called `user_id`. For example the shortcode `[flickrps user_id="67681714@N03"]` displays the photostream of the specified user, no matter what is the default user ID specified in the settings.
+
+= The photos are syncronized with Flickr? =
+
+Yes, of course. But remember that the cache don't allow to see the changes immediately.
 
 
 == Screenshots ==
@@ -69,6 +74,16 @@ Yes, you must use the shortcode attributes (in this case `user_id`) to have sett
 
 
 == Changelog ==
+
+= 1.6 =
+
+* Sets and Gallery
+* Some performance improvements
+* New settings UI style
+* Some bugs fixed, thanks to nammourdesigns.
+* New error detection system, now it's easier to find the wrong settings
+* pagination settings has been changed, to be more understandable
+* Justified Gallery updated to version 1.0.3
 
 = 1.5 =
 * updated Justified Gallery to version 1.0.2
