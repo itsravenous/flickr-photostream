@@ -14,6 +14,7 @@
  *		 http://code.google.com/p/phpflickr/issues/list
  *
  * The function buildPhotoURL was changed by Miro Mannino to allow more image size suffixes.
+ * The function photos_search was changed by Miro Mannino because it didn't use the call method (and it returned a strange format)
  */ 
 if ( !class_exists('phpFlickr') ) {
 	if (session_id() == "") {
@@ -1090,8 +1091,11 @@ if ( !class_exists('phpFlickr') ) {
 			 */
 
 			/* http://www.flickr.com/services/api/flickr.photos.search.html */
-			$this->request("flickr.photos.search", $args);
-			return $this->parsed_response ? $this->parsed_response['photos'] : false;
+			return $this->call('flickr.photos.search', $args);
+
+			//ORIGINAL
+			//$this->request("flickr.photos.search", $args);
+			//return $this->parsed_response ? $this->parsed_response['photos'] : false;
 		}
 
 		function photos_setContentType ($photo_id, $content_type) {

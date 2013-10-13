@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 1.6
+Version: 2.0
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -72,8 +72,8 @@ function flickr_photostream_setting(){
 	$flickr_photostream_maxPhotosPP_default = '20';
 	$flickr_photostream_justifyLastRow_default = '1';
 	$flickr_photostream_fixedHeight_default = '0';
-	$flickr_photostream_pagination_default = '0';
-	$flickr_photostream_lightbox_default = '0';
+	$flickr_photostream_pagination_default = 'none';
+	$flickr_photostream_lightbox_default = 'none';
 	$flickr_photostream_captions_default = '1';
 	$flickr_photostream_margins_default = '1';
 
@@ -85,8 +85,8 @@ function flickr_photostream_setting(){
 	$flickr_photostream_maxPhotosPP_saved = (int)get_option('$flickr_photostream_maxPhotosPP', $flickr_photostream_maxPhotosPP_default);
 	$flickr_photostream_justifyLastRow_saved = (int)get_option('$flickr_photostream_justifyLastRow', $flickr_photostream_justifyLastRow_default);
 	$flickr_photostream_fixedHeight_saved = (int)get_option('$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_default);
-	$flickr_photostream_pagination_saved = (int)get_option('$flickr_photostream_pagination', $flickr_photostream_pagination_default);
-	$flickr_photostream_lightbox_saved = (int)get_option('$flickr_photostream_lightbox', $flickr_photostream_lightbox_default);
+	$flickr_photostream_pagination_saved = get_option('$flickr_photostream_pagination', $flickr_photostream_pagination_default);
+	$flickr_photostream_lightbox_saved = get_option('$flickr_photostream_lightbox', $flickr_photostream_lightbox_default);
 	$flickr_photostream_captions_saved = (int)get_option('$flickr_photostream_captions', $flickr_photostream_captions_default);
 	$flickr_photostream_margins_saved = (int)get_option('$flickr_photostream_margins', $flickr_photostream_margins_default);
 	    
@@ -126,8 +126,8 @@ function flickr_photostream_setting(){
        	}
         $flickr_photostream_justifyLastRow_saved = ((int)$_POST["flickr_photostream_justifyLastRow"] != 0)? 1:0;
         $flickr_photostream_fixedHeight_saved = ((int)$_POST["flickr_photostream_fixedHeight"] != 0)? 1:0;
-        $flickr_photostream_pagination_saved = ((int)$_POST["flickr_photostream_pagination"] != 0)? 1:0;
-        $flickr_photostream_lightbox_saved = ((int)$_POST["flickr_photostream_lightbox"] != 0)? 1:0;
+        $flickr_photostream_pagination_saved = $_POST["flickr_photostream_pagination"];
+        $flickr_photostream_lightbox_saved = $_POST["flickr_photostream_lightbox"];
         $flickr_photostream_captions_saved = ((int)$_POST["flickr_photostream_captions"] != 0)? 1:0;
         $flickr_photostream_margins_saved = (int)$_POST["flickr_photostream_margins"];
        	if ($flickr_photostream_margins_saved <= 0 || $flickr_photostream_margins_saved > 30){
@@ -178,59 +178,90 @@ function flickr_photostream_setting(){
 				<h3><?php _e('Help', 'flickr-photostream' ); ?></h3>
 				<div class="inside">
 					<p>
-						<?php _e('To display the default user\'s Photostream, create a page and simply write the shortcode:', 'flickr-photostream' ); ?>
+						<?php _e('To display the default user\'s Photostream, create a page and simply write the following shortcode where you want to display the gallery.', 'flickr-photostream' ); ?>
 						<div style="margin-left: 30px">
-							<pre>[flickrps]</pre>
+							<pre>[flickr_photostream]</pre>
 						</div>
 					</p>
 					<p>
 						<?php _e('However, you can also use the attributes to have settings that are different than the defaults. For example:', 'flickr-photostream' ); ?>
 						<div style="margin-left: 30px">
-							<pre>[flickrps max_num_photos="50" no_pages="true"]</pre>
+							<pre>[flickr_photostream max_num_photos="50" no_pages="true"]</pre>
 							<?php _e('displays the latest 50 photos of the default user Photostream, without any page navigation. (the other settings are the defaults)', 'flickr-photostream' ); ?>
 						</div>
 					</p>
 					<p>
 						<?php _e('You can also configure it to show other Photostreams. For example:', 'flickr-photostream' ); ?>
 						<div style="margin-left: 30px">
-							<pre>[flickrps user_id="67681714@N03"]</pre>
-							<?php _e('displays the Photostream of the specified user, no matter what is the default user ID specified in the settings.', 'flickr-photostream' ); ?>
+							<pre>[flickr_photostream user_id="67681714@N03"]</pre>
+							<?php _e('displays the Photostream of the specified user, no matter what is the default user ID in the settings. Remember that you can use <a href="http://idgettr.com/" target="_blank">idgettr</a> to retrieve the <code>user_id</code>.', 'flickr-photostream' ); ?>
 						</div>
 					</p>
 
 		
 					<h4><?php _e('Sets', 'flickr-photostream' ); ?></h4>
 					<p>
-						<?php _e('You can also show a particular photo set. You only need to specify its <code>photoset_id</code>, located in the URL.', 'flickr-photostream' ); ?>
+						<?php _e('To show the photos of a particular photo set, you need to know its <code>photoset_id</code>.', 'flickr-photostream' ); ?>
 						<?php _e('For example, the <code>photoset_id</code> of the photo set located in the URL:', 'flickr-photostream' ); ?>
 						<code>http://www.flickr.com/photos/miro-mannino/sets/72157629228993613/</code>
 						<?php _e('is: ', 'flickr-photostream' ); ?>
 						<code>72157629228993613</code>.
-						<?php _e('You can see that it is always the number after the word \'sets\'.', 'flickr-photostream' ); ?>
+						<?php _e('You can see that it is always the number after the word \'/sets/\'.', 'flickr-photostream' ); ?>
 						<div>
-							<?php _e('To show a particular photoset, you need to specify its <code>photoset_id</code> with an attribute. For example:', 'flickr-photostream' ); ?>
+							<?php _e('To show a particular photoset, you need to use the <code>flickr_set</code> shortcode, and specify the <code>photoset_id</code> with the attribute <code>id</code>. For example:', 'flickr-photostream' ); ?>
 							<div style="margin-left: 30px">
-								<pre>[flickrps photoset_id="72157629228993613"]</pre>
+								<pre>[flickr_set id="72157629228993613"]</pre>
 							</div>
 						</div>
 					</p>
 
 					<h4><?php _e('Galleries', 'flickr-photostream' ); ?></h4>
 					<p>
-						<?php _e('You can also show a particular gallery. You only need to specify its <code>gallery_id</code>, located in the URL.', 'flickr-photostream' ); ?>
+						<?php _e('To show the photos of a particular gallery, you need to know the <code>user_id</code> of the user that owns it, and its <code>gallery_id</code>.', 'flickr-photostream' ); ?>
 						<?php _e('For example, the <code>gallery_id</code> of the gallery located in the URL:', 'flickr-photostream' ); ?>
 						<code>http://www.flickr.com/photos/miro-mannino/galleries/72157636382842016/</code>
 						<?php _e('is: ', 'flickr-photostream' ); ?>
 						<code>72157636382842016</code>.
-						<?php _e('You can see that it is always the number after the word \'galleries\'.', 'flickr-photostream' ); ?>
+						<?php _e('You can see that it is always the number after the word \'/galleries/\'.', 'flickr-photostream' ); ?>
 						<div>
-							<?php _e('To show a particular gallery, you need to specify its <code>gallery_id</code> with an attribute. For example:', 'flickr-photostream' ); ?>
+							<?php _e('To show a particular gallery, you need to use the <code>flickr_gallery</code> shortcode, and specify the <code>user_id</code> with the attribute <code>user_id</code>, and the <code>gallery_id</code> with the attribute <code>id</code>. For example:', 'flickr-photostream' ); ?>
 							<div style="margin-left: 30px">
-								<pre>[flickrps gallery_id="72157636382842016"]</pre>
+								<pre>[flickr_gallery user_id="67681714@N03" gallery_id="72157636382842016"]</pre>
 							</div>
 						</div>
-						<?php _e('Remember that the gallery owner is always the specified user. If you specify an user that doesn\'t own the specified gallery, the gallery will not be found.', 'flickr-photostream' ); ?>
+						<?php _e('Remember that, if the gallery is owned by the default user (specified in the settings), you don\'t need the <code>user_id</code> attribute in the shortcode.', 'flickr-photostream' ); ?>
 					</p>
+
+					<h4><?php _e('Group pools', 'flickr-photostream' ); ?></h4>
+					<p>
+						<?php _e('To show the photos of a particular group pool, you need to know the <code>group_id</code>, that you can retrieve using <a href="http://idgettr.com/" target="_blank">idgettr</a>.', 'flickr-photostream' ); ?>
+						<div>
+							<?php _e('To show a particular group pool, you need to use the <code>flickr_group</code> shortcode, and specify the <code>group_id</code> with the attribute <code>id</code>. For example:', 'flickr-photostream' ); ?>
+							<div style="margin-left: 30px">
+								<pre>[flickr_group id="1563131@N22"]</pre>
+							</div>
+						</div>
+					</p>
+
+					<h4><?php _e('Tags', 'flickr-photostream' ); ?></h4>
+					<p>
+						<?php _e('To show the photos that have some particular tags, you need to use the <code>flickr_tags</code> shortcode, and specify the <code>user_id</code> and the tags with the attribute <code>tags</code>, as a comma-delimited list of words. For example:', 'flickr-photostream' ); ?>
+						<div style="margin-left: 30px">
+							<pre>[flickr_tags user_id="67681714@N03" tags="cat, square, nikon"]</pre>
+							<?php _e('Displays photos with one or more of the tags listed (the list is viewed as an OR combination, that is the default behavior).', 'flickr-photostream' ); ?>
+						</div>
+						<p>
+							<?php _e('You can also exclude results that match a term by prepending it with a <code>-</code> character.', 'flickr-photostream' ); ?>
+							<?php _e('Then, you can choose to use the list as a OR combination of tags (to return photos that have <b>any</b> tag), or an AND combination (to return photos that have <b>all</b> the tags).', 'flickr-photostream' ); ?>
+							<?php _e('To do this, you need to use the <code>tags_mode</code>, specifying "any" or "all". For example:', 'flickr-photostream' ); ?>						
+							<div style="margin-left: 30px">
+								<pre>[flickr_tags user_id="67681714@N03" tags="cat, square, nikon" tags_mode="all"]</pre>
+								<?php _e('Displays photos with all the tags listed (the list is viewed as an AND combination).', 'flickr-photostream' ); ?>
+							</div>
+						</p>
+						<?php _e('Remember that, if the photo that you want to display is owned by the default user (specified in the settings), you don\'t need the <code>user_id</code> attribute in the shortcode.', 'flickr-photostream' ); ?>
+					</p>
+
 				</div>
 			</div>
 
@@ -330,13 +361,13 @@ function flickr_photostream_setting(){
 								<th scope="row"><?php _e('Pagination', 'flickr-photostream' ); ?></th>
 								<td>
 									<label for="flickr_photostream_pagination">
-										<input type="checkbox" name="flickr_photostream_pagination" 
-											<?php if($flickr_photostream_pagination_saved == 1){ echo('checked="checked"'); }; ?> 
-											value="1" 
-											style="margin-right:5px"
-										/>
+										<select name="flickr_photostream_pagination" style="margin-right:5px">
+											<option value="none" <?php if($flickr_photostream_pagination_saved === 'none'){ echo('selected="selected"'); }; ?> >None</option>
+											<option value="prevnext" <?php if($flickr_photostream_pagination_saved === 'prevnext'){ echo('selected="selected"'); }; ?> >Previous and Next</option>
+											<option value="numbers" <?php if($flickr_photostream_pagination_saved === 'numbers'){ echo('selected="selected"'); }; ?> >Page Numbers</option>
+										</select>
 										<?php _e('If enabled, navigation buttons will be shown, and you can see the older photos.<br/><i>Use only one instance per page with this settings enabled!</i>', 'flickr-photostream' ); ?></li>
-										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'pagination' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'pagination' . __('</code> attribute to change this default value (with the value <code>none</code>, <code>prevnext</code> or <code>numbers</code>)', 'flickr-photostream') ); ?></div>
 									</label>
 								</td>
 							</tr>
@@ -344,13 +375,16 @@ function flickr_photostream_setting(){
 								<th scope="row"><?php _e('Lightbox', 'flickr-photostream' ); ?></th>
 								<td>
 									<label for="flickr_photostream_lightbox">
-									<input type="checkbox" name="flickr_photostream_lightbox" 
-										<?php if($flickr_photostream_lightbox_saved == 1){ echo('checked="checked"'); }; ?> 
-										value="1" 
-										style="margin-right:5px"
-									/>
-									<?php echo( __('If enabled, the photo will be shown using <i>colorbox</i>, make sure that you have installed it with a plugin (i.e. ', 'flickr-photostream' ) . '<a href="http://wordpress.org/extend/plugins/jquery-colorbox/">jQuery Colorbox</a>, <a href="http://wordpress.org/extend/plugins/lightbox-plus/">Lightbox Plus</a>)'); ?></li>
-										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'lightbox' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+									<select name="flickr_photostream_lightbox" style="margin-right:5px">
+										<option value="none" <?php if($flickr_photostream_lightbox_saved === 'none'){ echo('selected="selected"'); }; ?> >None</option>
+										<option value="colorbox" <?php if($flickr_photostream_lightbox_saved === 'colorbox'){ echo('selected="selected"'); }; ?> >Colorbox</option>
+										<option value="swipebox" <?php if($flickr_photostream_lightbox_saved === 'swipebox'){ echo('selected="selected"'); }; ?> >Swipebox</option>
+									</select>
+									<div>
+										<?php echo( __('With Colorbox, make sure that you have installed it with a plugin (i.e. ', 'flickr-photostream' ) . '<a href="http://wordpress.org/extend/plugins/jquery-colorbox/">jQuery Colorbox</a>, <a href="http://wordpress.org/extend/plugins/lightbox-plus/">Lightbox Plus</a>).'); ?>
+										<?php _e('On the contrary, Swipebox comes with this plugin and you don\'t have to provide it with another plugin.', 'flickr-photostream'); ?>
+									</div>
+									<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'lightbox' . __('</code> attribute to change this default value (with the value <code>none</code>, <code>colorbox</code> or <code>swipebox</code>).', 'flickr-photostream') ); ?></div>
 									</label>
 								</td>
 							</tr>
@@ -363,7 +397,7 @@ function flickr_photostream_setting(){
 										value="1" 
 										style="margin-right:5px"
 									/>
-									<?php _e('If enabled, the title of the photo will be shown over the image when the mouse is over. <i>Captions, with the images height too short, become aesthetically unpleasing</i>', 'flickr-photostream'); ?></li>
+									<?php _e('If enabled, the title of the photo will be shown over the image when the mouse is over. Note: <i>captions, with small images, become aesthetically unpleasing</i>.', 'flickr-photostream'); ?></li>
 										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'captions' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
 									</label>
 								</td>

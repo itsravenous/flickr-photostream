@@ -8,31 +8,32 @@ Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
 
-Just your beautiful Flickr Photostream. In a Justified Grid.
+Just your beautiful Flickr photos. In a Justified Grid.
 
 == Description ==
 
-Plugin that allows you to show your Flickr **Photostream**, **Photosets** and **Galleries** in your blog.
+Plugin that allows you to show your Flickr **Photostream**, **Photosets**, **Galleries**, **Group Pools**, or **Tags** in your blog, with a very elegant and awesome layout.
 
 Create a gallery with the **same style of Flickr or Google+**! Awesome thumbnails disposition with a **justified grid**, calculated by a fast Javascript algorithm! You can **configure the height of the rows** to have a grid that can be *like the justified grid of Flickr or of Google+*. But, you can do more! For example you can *configure the margin between the images*, create rows with fixed height, or decide if you want to justify the last row or not!
 
-You can also configure a gallery to show photos with a link to Flickr or with a **Lightbox** (you must have a Colorbox plugin installed).
+You can also configure a gallery to show photos with a link to Flickr or with a **Lightbox** (Swipebox or Colorbox).
 
-Always high quality thumbnails! The plugin chooses the **right resolution for the image**, using the "Flickr size suffixes", no small images are resized to be bigger and no big images are resized to be smaller!
+Always high quality thumbnails! The plugin chooses the **right resolution for the image**, using the "Flickr size suffixes", no small images are resized to be bigger and no big images are resized to be smaller! You can create gallery with very large thumbnails!
 
 Remember that this plugin is not an official Flickr® plugin, any help will be greatly appreciated.
 
  = Features: = 
 
- * A gallery with the same style of Flickr or Google+.
+ * A gallery with the same layout of Flickr or Google+, configurable as you want.
  * Fast and light. Also uses a cache to load galleries instantly.
- * You can show photos from your Flickr Photostream, from a Photoset, or Gallery.
+ * You can show photos from your Flickr Photostream, from a **Photoset**, from a **Gallery**, or from a **Group Pool**.
+ * You can show all the photos that has some **Tags**.
  * You can create multiple galleries with different settings, also in the same page.
  * Customizable image sizes, always with a justified disposition.
  * Photo titles shown when the mouse is above.
- * Decide if use a lightbox (Colorbox) to show the original photo, or Flickr.
+ * Decide if use a lightbox (Colorbox or Swipebox) to show the original photo, or Flickr.
  * Customizable style, you need just to change a CSS.
- * Pagination. Decide if you want to show the newer photos or not.
+ * Pagination with SEO friendly URLs. Decide if you want to show the newer photos or not.
  * Available in English and Italian
 
 = Live Demo = 
@@ -45,9 +46,9 @@ See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
 1. Upload the folder `flickr-photostream` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure the plugin settings through the 'Settings > Flickr Photostream' page.
-4. Set the API key and the User ID
-5. Create a page with the shortcode `[flickrps]` to show the specified user photostream (you can add attributes in the shortcode, to show set, gallery or simply to have settings that are different than the default).
-6. (optional) If you want to use a lightbox, install a Colorbox plugin (i.e. [JQuery Colorbox](http://www.techotronic.de/plugins/jquery-colorbox/)). Then, check that in the settings the lightbox option is enabled.
+4. Set the API key and the default User ID
+5. Create a page with the shortcode `[flickr_photostream]` to show the specified user photostream (you can add attributes in the shortcode, to show set, gallery or simply to have settings that are different than the default).
+6. (optional) If you want to use Colorbox, install a Colorbox plugin (i.e. [JQuery Colorbox](http://www.techotronic.de/plugins/jquery-colorbox/)). Then, check the settings the lightbox option.
 
 == Frequently Asked Questions ==
 
@@ -57,7 +58,7 @@ In a word: Photon. Make sure that you don't have it. It changes the picture sour
 
 = Can I have in the same blog two photostream of different Flickr's users?  =
 
-Yes, you must use the shortcode attributes called `user_id`. For example the shortcode `[flickrps user_id="67681714@N03"]` displays the photostream of the specified user, no matter what is the default user ID specified in the settings.
+Yes, you must use the shortcode attributes called `user_id`. For example the shortcode `[flickr_photostream user_id="67681714@N03"]` displays the photostream of the specified user, no matter what is the default user ID specified in the settings.
 
 = The photos are syncronized with Flickr? =
 
@@ -74,9 +75,22 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
+= 2.0 =
+
+* Group pools
+* Tags
+* New shortcodes, due to the number of functionalities: photostream, group, tags, set, and galleries.
+* The shortcode [flickrps] is still usable to show a photostream, but will be removed in the future (USE THE NEW SHORTCODES).
+* Now one can use the Colorbox or the Swipebox lightbox
+* Standard Wordpress pagination
+* Pagination with prev and next links, or with page numbers
+* Performance improvements, reduced the numbers of calls to the Flickr server.
+* Justified Gallery updated to version 2.0
+
 = 1.6 =
 
-* Sets and Gallery
+* Sets 
+* Galleries
 * Some performance improvements
 * New settings UI style
 * Some bugs fixed, thanks to nammourdesigns.
@@ -125,6 +139,20 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 
 == Upgrade Notice ==
+
+= 2.0 =
+
+* New shortcodes, due to the number of functionalities: photostream, group, tags, set, and galleries. The shortcode [flickrps] is still usable to show a photostream, but will be removed in the future (USE THE NEW SHORTCODES).
+* Group pools, Tags
+* Now one can use the Colorbox or the Swipebox lightbox
+* Standard Wordpress pagination
+* Justified Gallery updated to version 2.0
+
+= 1.6 =
+
+* Sets, Galleries
+* New error detection system, now it's easier to find the wrong settings
+* Justified Gallery updated to version 1.0.4
 
 = 1.5 =
 * updated Justified Gallery to version 1.0.2
