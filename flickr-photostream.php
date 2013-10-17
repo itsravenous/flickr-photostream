@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 2.0.3
+Version: 2.0.5
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -55,8 +55,8 @@ function flickrps_init() {
 }
 
 //Register with hook 'wp_enqueue_scripts' which can be used for front end CSS and JavaScript
-add_action('wp_enqueue_scripts', 'addFlickrPhotostreamCSSandJS');
-function addFlickrPhotostreamCSSandJS() {
+add_action('wp_enqueue_scripts', 'flickrps_addCSSandJS');
+function flickrps_addCSSandJS() {
 	wp_register_style('justifiedGalleryCSS', plugins_url('justifiedgallery/css/jquery.justifiedgallery.min.css', __FILE__));
 	wp_register_style('swipeboxCSS', plugins_url('swipebox/swipebox.css', __FILE__));
 	
@@ -71,19 +71,19 @@ function addFlickrPhotostreamCSSandJS() {
 	wp_enqueue_script('swipeboxJS');
 }
 
-function formatError($errorMsg) {
+function flickrps_formatError($errorMsg) {
 	return '<div class="flickrps-error"><span style="color:red">' 
 		. __('FlickrPhotostream error', 'flickr-photostream') 
 		. ': </span><span class="flickrps-error-msg">' . $errorMsg . '</span></div>';
 }
 
-function formatFlickrAPIError($errorMsg) {
+function flickrps_formatFlickrAPIError($errorMsg) {
 	return '<div class="flickrps-error"><span style="color:red">' 
 		. __('Flickr API error', 'flickr-photostream') 
 		. ': </span><span class="flickrps-error-msg">' . $errorMsg . '</span></div>';
 }
 
-function create_gallery($action, $atts) {
+function flickrps_createGallery($action, $atts) {
 	static $shortcode_unique_id = 0;
 	$ris = "";
 	
@@ -152,37 +152,37 @@ function create_gallery($action, $atts) {
 	//Errors-----------------------
 	if ($action === 'phs' || $action === 'gal' || $action === 'tag') {
 		if (!isset($user_id) || strlen($user_id) == 0) 
-			return(formatError(__('You must specify the user_id for this action, using the "user_id" attribute', 'flickr-photostream')));	
+			return(flickrps_formatError(__('You must specify the user_id for this action, using the "user_id" attribute', 'flickr-photostream')));	
 	}
 
 	if ($action === 'gal') {
 		if (!isset($id) || strlen($id) == 0) 
-			return(formatError(__('You must specify the id of the gallery, using the "id" attribute', 'flickr-photostream')));	
+			return(flickrps_formatError(__('You must specify the id of the gallery, using the "id" attribute', 'flickr-photostream')));	
 	}
 
 	if ($action === 'set') {
 		if (!isset($id) || strlen($id) == 0) 
-			return(formatError(__('You must specify the id of the set, using the "id" attribute', 'flickr-photostream')));	
+			return(flickrps_formatError(__('You must specify the id of the set, using the "id" attribute', 'flickr-photostream')));	
 	}
 
 	if ($action === 'tag') {
 		if (!isset($tags) || strlen($tags) == 0) 
-			return(formatError(__('You must specify the tags using the "tags" attribute', 'flickr-photostream')));
+			return(flickrps_formatError(__('You must specify the tags using the "tags" attribute', 'flickr-photostream')));
 		if ($tags_mode !== 'any' && $tags_mode !== 'all') 
-			return(formatError(__('You must specify a valid tags_mode: "any" or "all"', 'flickr-photostream')));
+			return(flickrps_formatError(__('You must specify a valid tags_mode: "any" or "all"', 'flickr-photostream')));
 	}
 
 	if ($action === 'grp') {
 		if (!isset($id) || strlen($id) == 0) 
-			return(formatError(__('You must specify the id of the group, using the "id" attribute', 'flickr-photostream')));	
+			return(flickrps_formatError(__('You must specify the id of the group, using the "id" attribute', 'flickr-photostream')));	
 	}
 
 	if ($pagination !== 'none' && $pagination !== 'prevnext' && $pagination !== 'numbers') {
-		return(formatError(__('The pagination attribute can be only "none", "prevnext" or "numbers".', 'flickr-photostream')));		
+		return(flickrps_formatError(__('The pagination attribute can be only "none", "prevnext" or "numbers".', 'flickr-photostream')));		
 	}
 
 	if ($lightbox !== 'none' && $lightbox !== 'colorbox' && $lightbox !== 'swipebox') {
-		return(formatError(__('The lightbox attribute can be only "none", "colorbox" or "swipebox".', 'flickr-photostream')));		
+		return(flickrps_formatError(__('The lightbox attribute can be only "none", "colorbox" or "swipebox".', 'flickr-photostream')));		
 	}
 
 	//Photo loading----------------
@@ -193,10 +193,10 @@ function create_gallery($action, $atts) {
     } else if ($action === 'gal') {
     	//Show the photos of a particular gallery
     	$photos_url[$user_id] = $f->urls_getUserPhotos($user_id);
-    	if ($f->getErrorCode() != NULL) return(formatFlickrAPIError($f->getErrorMsg()));
+    	if ($f->getErrorCode() != NULL) return(flickrps_formatFlickrAPIError($f->getErrorMsg()));
 
     	$gallery_info = $f->urls_lookupGallery($photos_url[$user_id] . 'galleries/' . $id);
-    	if ($f->getErrorCode() != NULL) return(formatFlickrAPIError($f->getErrorMsg()));
+    	if ($f->getErrorCode() != NULL) return(flickrps_formatFlickrAPIError($f->getErrorMsg()));
 
     	$photos = $f->galleries_getPhotos($gallery_info['gallery']['id'], "description", $max_num_photos, $page_num);	
 
@@ -227,20 +227,17 @@ function create_gallery($action, $atts) {
     	$photos_main_index = 'photos';
     }
 
-	if ($f->getErrorCode() != NULL) return(formatFlickrAPIError($f->getErrorMsg()));
+	if ($f->getErrorCode() != NULL) return(flickrps_formatFlickrAPIError($f->getErrorMsg()));
 
     if(count((array)$photos[$photos_main_index]['photo']) == 0) return(__('No photos', 'flickr-photostream'));
 
 	//we calculate that the aspect ratio has an average of 4:3
 	if($images_height <= 75){
 		$imgSize = "thumbnail"; //thumbnail (longest side:100)
-		$usedSuffix = "lt100";
 	}else if($images_height <= 180){
 		$imgSize = "small"; //small (longest side:240)
-		$usedSuffix = "lt240";
 	}else{ //if <= 240
 		$imgSize = "small_320"; //small (longest side:320)
-		$usedSuffix = "lt320";
 	}
 
 	$ris .= '<!-- Flickr Photostream by Miro Mannino -->' . "\n"
@@ -263,7 +260,7 @@ function create_gallery($action, $atts) {
 			//Save the owner url
 			if (!isset($photos_url[$photo_owner])) {
 				$photos_url[$photo_owner] = $f->urls_getUserPhotos($photo_owner);
-				if ($f->getErrorCode() != NULL) return(formatFlickrAPIError($f->getErrorMsg()));
+				if ($f->getErrorCode() != NULL) return(flickrps_formatFlickrAPIError($f->getErrorMsg()));
 			}
 
 			$ris .= '<a href="' . $photos_url[$photo_owner] . $photo['id'] . '/in/photostream/lightbox/" ';
@@ -272,14 +269,14 @@ function create_gallery($action, $atts) {
 		}
 		
 		$ris .= '<img alt="' . htmlspecialchars($photo['title'], ENT_QUOTES, 'UTF-8') 
-			 .  '" src="' . $f->buildPhotoURL($photo, $imgSize) . '" /></a>';
+			 .  '" src="' . $f->buildPhotoURL($photo, $imgSize)
+			 .	'" data-safe-src="' . $f->buildPhotoURL($photo, $imgSize) . '" /></a>';
 		
     }
 
 	$ris .= '</div>'
 		 .	'<script type="text/javascript">'
 		 .	'jQuery("#flickrGal' . $shortcode_unique_id . '").justifiedGallery({'
-		 .	'\'usedSuffix\':\'' . $usedSuffix . '\', '
 		 .	'\'justifyLastRow\':' . ($justify_last_row ? 'true' : 'false') . ', '
 		 .	'\'rowHeight\':' . $images_height . ', '
 		 .	'\'fixedHeight\':' . ($fixed_height ? 'true' : 'false') . ', '		 
@@ -374,32 +371,32 @@ function create_gallery($action, $atts) {
 
 //[flickr_photostream user_id="..." ...]
 function flickr_photostream($atts, $content = null) {
-	return create_gallery('phs', $atts);
+	return flickrps_createGallery('phs', $atts);
 }
 add_shortcode('flickr_photostream', 'flickr_photostream');
 add_shortcode('flickrps', 'flickr_photostream'); //TODO to remove, legacy code
 
 //[flickr_set id="..." ...]
 function flickr_set($atts, $content = null) {
-	return create_gallery('set', $atts);	
+	return flickrps_createGallery('set', $atts);	
 }
 add_shortcode('flickr_set', 'flickr_set');
 
 //[flickr_gallery user_id="..." id="..." ...]
 function flickr_gallery($atts, $content = null) {
-	return create_gallery('gal', $atts);		
+	return flickrps_createGallery('gal', $atts);		
 }
 add_shortcode('flickr_gallery', 'flickr_gallery');
 
 //[flickr_tags user_id="..." tags="..." tags_mode="any/all" ...]
 function flickr_tags($atts, $content = null) {
-	return create_gallery('tag', $atts);
+	return flickrps_createGallery('tag', $atts);
 }
 add_shortcode('flickr_tags', 'flickr_tags');
 
 //[flickr_group id="..."]
 function flickr_group($atts, $content = null) {
-	return create_gallery('grp', $atts);
+	return flickrps_createGallery('grp', $atts);
 }
 add_shortcode('flickr_group', 'flickr_group');
 
