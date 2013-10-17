@@ -14,7 +14,7 @@ Just your beautiful Flickr photos. In a Justified Grid.
 
 Plugin that allows you to show your Flickr **Photostream**, **Photosets**, **Galleries**, **Group Pools**, or **Tags** in your blog, with a very elegant and awesome layout.
 
-Create a gallery with the **same style of Flickr or Google+**! Awesome thumbnails disposition with a **justified grid**, calculated by a <a href="http://miromannino.com/projects/justified-gallery/">fast Javascript algorithm</a>! You can **configure the height of the rows** to have a grid that can be *like the justified grid of Flickr or of Google+*. But, you can do more! For example you can *configure the margin between the images*, create rows with fixed height, or decide if you want to justify the last row or not!
+Create a gallery with the **same style of Flickr or Google+**! Awesome thumbnails disposition with a **justified grid**, calculated by a fast javascript algorithm called <a href="http://miromannino.com/projects/justified-gallery/ ‎" title="Justified Gallery">Justified Gallery</a>! You can **configure the height of the rows** to have a grid that can be *like the justified grid of Flickr or of Google+*. But, you can do more! For example you can *configure the margin between the images*, create rows with fixed height, or decide if you want to justify the last row or not!
 
 You can also configure a gallery to show photos with a link to Flickr or with a **Lightbox** (Swipebox or Colorbox).
 
