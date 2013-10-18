@@ -52,10 +52,6 @@ See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
 
 == Frequently Asked Questions ==
 
-= Why I see a gallery of placeholder where each thumbnail is void? And why clicking on the thumbnail the correct image is shown? =
-
-In a word: Photon. Make sure that you don't have it. It changes the picture source URLs, in this way the plugin can't know where to take the pictures.
-
 = Can I have in the same blog two photostream of different Flickr's users?  =
 
 Yes, you must use the shortcode attributes called `user_id`. For example the shortcode `[flickr_photostream user_id="67681714@N03"]` displays the photostream of the specified user, no matter what is the default user ID specified in the settings.
@@ -74,6 +70,10 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 
 == Changelog ==
+
+= 2.0.5 = 
+
+* now it works with Photon
 
 = 2.0 =
 
