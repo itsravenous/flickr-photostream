@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flickr Photostream\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-13 22:27+0100\n"
-"PO-Revision-Date: 2013-10-13 22:28+0100\n"
+"POT-Creation-Date: 2013-10-22 18:15+0100\n"
+"PO-Revision-Date: 2013-10-22 18:17+0100\n"
 "Last-Translator: Miro Mannino <miro.mannino@gmail.com>\n"
 "Language-Team: Miro Mannino <miro.mannino@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,277 +15,287 @@ msgstr ""
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../flickr-photostream-setting.php:106
+#: ../flickr-photostream-setting.php:111
 msgid "API Key is not valid"
 msgstr "API Key non valida"
 
-#: ../flickr-photostream-setting.php:113
+#: ../flickr-photostream-setting.php:118
 msgid "Invalid UserID"
 msgstr "ID Utente non valido"
 
-#: ../flickr-photostream-setting.php:120
+#: ../flickr-photostream-setting.php:125
 msgid "The 'Images Height' field must have a value greater than or equal to 30"
 msgstr "Il campo 'Altezza Immagini' deve essere un valore maggiore o uguale a 30"
 
-#: ../flickr-photostream-setting.php:125
+#: ../flickr-photostream-setting.php:130
 msgid "The 'Photos per page' field must have a value greater than 0"
 msgstr "Il campo 'Foto per pagina' deve avere un valore maggiore di 0"
 
-#: ../flickr-photostream-setting.php:135
+#: ../flickr-photostream-setting.php:141
 msgid "The 'Margins' field must have a value greater than 0, and not greater than 30"
 msgstr "Il campo 'Margini tra le immagini' deve avere un valore maggiore di 0, e non più grande di 30"
 
-#: ../flickr-photostream-setting.php:151
+#: ../flickr-photostream-setting.php:158
 msgid "Settings updated."
 msgstr "Opzioni salvate"
 
-#: ../flickr-photostream-setting.php:158
+#: ../flickr-photostream-setting.php:165
 msgid "Invalid values, the settings have not been updated"
 msgstr "Valori non validi, le opzioni non sono state salvate"
 
-#: ../flickr-photostream-setting.php:178
+#: ../flickr-photostream-setting.php:185
 msgid "Help"
 msgstr "Aiuto"
 
-#: ../flickr-photostream-setting.php:181
+#: ../flickr-photostream-setting.php:188
 msgid "To display the default user's Photostream, create a page and simply write the following shortcode where you want to display the gallery."
 msgstr "Per mostrare il Photostream dell'utente di default, create una pagina e inserite semplicemente il seguente shortcode dove volete mostrare la galleria."
 
-#: ../flickr-photostream-setting.php:187
+#: ../flickr-photostream-setting.php:194
 msgid "However, you can also use the attributes to have settings that are different than the defaults. For example:"
 msgstr "Tuttavia, puoi utilizzare gli attributi per avere impostazioni che sono diverse rispetto a quelle di default. Per esempio:"
 
-#: ../flickr-photostream-setting.php:190
+#: ../flickr-photostream-setting.php:197
 msgid "displays the latest 50 photos of the default user Photostream, without any page navigation. (the other settings are the defaults)"
 msgstr "mostra le ultime 50 foto del Photostream dell'utente di default, senza nessuna navigazione tra pagine. (le altre impostazioni sono quelle di default)"
 
-#: ../flickr-photostream-setting.php:194
+#: ../flickr-photostream-setting.php:201
 msgid "You can also configure it to show other Photostreams. For example:"
 msgstr "Puoi anche configurarlo per mostrare altri Photostream. Per esempio:"
 
-#: ../flickr-photostream-setting.php:197
+#: ../flickr-photostream-setting.php:204
 msgid "displays the Photostream of the specified user, no matter what is the default user ID in the settings. Remember that you can use <a href=\"http://idgettr.com/\" target=\"_blank\">idgettr</a> to retrieve the <code>user_id</code>."
 msgstr "mostra il Photostream dell'utente specificato, indipendentemente dall'ID dell'utente che è stato specificato nelle impostazioni. Ricorda che puoi utilizzare <a href=\"http://idgettr.com/\" target=\"_blank\">idgettr</a> per sapere l'<code>user_id</code>."
 
-#: ../flickr-photostream-setting.php:202
+#: ../flickr-photostream-setting.php:209
 msgid "Sets"
 msgstr "Sets"
 
-#: ../flickr-photostream-setting.php:204
+#: ../flickr-photostream-setting.php:211
 msgid "To show the photos of a particular photo set, you need to know its <code>photoset_id</code>."
 msgstr "Per mostrare un particolare photoset bisogna conoscere il suo <code>photoset_id</code>."
 
-#: ../flickr-photostream-setting.php:205
+#: ../flickr-photostream-setting.php:212
 msgid "For example, the <code>photoset_id</code> of the photo set located in the URL:"
 msgstr "Per esempio, il <code>photoset_id</code> del photoset accessibile dall'URL:"
 
-#: ../flickr-photostream-setting.php:207
-#: ../flickr-photostream-setting.php:223
+#: ../flickr-photostream-setting.php:214
+#: ../flickr-photostream-setting.php:230
 msgid "is: "
 msgstr "è:"
 
-#: ../flickr-photostream-setting.php:209
+#: ../flickr-photostream-setting.php:216
 msgid "You can see that it is always the number after the word '/sets/'."
 msgstr "Nota che è sempre il numero che viene dopo la parola '/sets/'."
 
-#: ../flickr-photostream-setting.php:211
+#: ../flickr-photostream-setting.php:218
 msgid "To show a particular photoset, you need to use the <code>flickr_set</code> shortcode, and specify the <code>photoset_id</code> with the attribute <code>id</code>. For example:"
 msgstr "Per mostrare un particolare photoset devi utilizzare lo shortcode <code>flickr_set</code>, e specificare il <code>photoset_id</code> utilizzando l'attributo <code>id</code>. Per esempio:"
 
-#: ../flickr-photostream-setting.php:218
+#: ../flickr-photostream-setting.php:225
 msgid "Galleries"
 msgstr "Gallerie"
 
-#: ../flickr-photostream-setting.php:220
+#: ../flickr-photostream-setting.php:227
 msgid "To show the photos of a particular gallery, you need to know the <code>user_id</code> of the user that owns it, and its <code>gallery_id</code>."
 msgstr "Per mostrare una particolare galleria bisogna conoscere l'<code>user_id</code> dell'utente che la possiede, ed anche la sua <code>gallery_id</code>."
 
-#: ../flickr-photostream-setting.php:221
+#: ../flickr-photostream-setting.php:228
 msgid "For example, the <code>gallery_id</code> of the gallery located in the URL:"
 msgstr "Per esempio, il <code>gallery_id</code> della galleria accessibile con la URL:"
 
-#: ../flickr-photostream-setting.php:225
+#: ../flickr-photostream-setting.php:232
 msgid "You can see that it is always the number after the word '/galleries/'."
 msgstr "Nota che è sempre il numero che viene dopo la parola '/galleries/'."
 
-#: ../flickr-photostream-setting.php:227
+#: ../flickr-photostream-setting.php:234
 msgid "To show a particular gallery, you need to use the <code>flickr_gallery</code> shortcode, and specify the <code>user_id</code> with the attribute <code>user_id</code>, and the <code>gallery_id</code> with the attribute <code>id</code>. For example:"
 msgstr "Per mostrare una particolare galleria devi utilizzare lo shortcode <code>flickr_gallery</code>, e specificare l'<code>user_id</code> utilizzando l'attributo <code>user_id</code>, e il <code>gallery_id</code> utilizzando l'attributo <code>id</code>. Per esempio:"
 
-#: ../flickr-photostream-setting.php:232
+#: ../flickr-photostream-setting.php:239
 msgid "Remember that, if the gallery is owned by the default user (specified in the settings), you don't need the <code>user_id</code> attribute in the shortcode."
 msgstr "Ricorda che, se la galleria è posseduta dall'utente di default (specificato nelle impostazioni), puoi anche non utilizzare l'attributo <code>user_id</code> nello shortcode."
 
-#: ../flickr-photostream-setting.php:235
+#: ../flickr-photostream-setting.php:242
 msgid "Group pools"
 msgstr "Group Pool"
 
-#: ../flickr-photostream-setting.php:237
+#: ../flickr-photostream-setting.php:244
 msgid "To show the photos of a particular group pool, you need to know the <code>group_id</code>, that you can retrieve using <a href=\"http://idgettr.com/\" target=\"_blank\">idgettr</a>."
 msgstr "Per mostrare le foto di un particolare group pool bisogna conoscere il <code>group_id</code>, puoi recuperarlo utilizzando <a href=\"http://idgettr.com/\" target=\"_blank\">idgettr</a>."
 
-#: ../flickr-photostream-setting.php:239
+#: ../flickr-photostream-setting.php:246
 msgid "To show a particular group pool, you need to use the <code>flickr_group</code> shortcode, and specify the <code>group_id</code> with the attribute <code>id</code>. For example:"
 msgstr "Per mostrare un particolare group pool devi utilizzare lo shortcode <code>flickr_group</code>, e specificare il <code>group_id</code> utilizzando l'attributo <code>id</code>. Per esempio:"
 
-#: ../flickr-photostream-setting.php:246
+#: ../flickr-photostream-setting.php:253
 msgid "Tags"
 msgstr "Tags"
 
-#: ../flickr-photostream-setting.php:248
+#: ../flickr-photostream-setting.php:255
 msgid "To show the photos that have some particular tags, you need to use the <code>flickr_tags</code> shortcode, and specify the <code>user_id</code> and the tags with the attribute <code>tags</code>, as a comma-delimited list of words. For example:"
 msgstr "Per mostrare le foto che hanno un tag particolari, bisogna utilizzare lo shortcode <code>flickr_tags</code>, e specificare l'<code>user_id</code> e i tag con l'attributo <code>tags</code>, come una lista di parole separata da virgole. Per esempio:"
 
-#: ../flickr-photostream-setting.php:251
+#: ../flickr-photostream-setting.php:258
 msgid "Displays photos with one or more of the tags listed (the list is viewed as an OR combination, that is the default behavior)."
 msgstr "Mostra le foto che hanno uno o più tag tra quelli listati (la lista è vista come una combinazione in OR, che è il comportamento predefinito)."
 
-#: ../flickr-photostream-setting.php:254
+#: ../flickr-photostream-setting.php:261
 msgid "You can also exclude results that match a term by prepending it with a <code>-</code> character."
 msgstr "Puoi anche escludere i risultati che corrispondono ad un termine aggiungendo all'inizio del termine il carattere <code>-</code>."
 
-#: ../flickr-photostream-setting.php:255
+#: ../flickr-photostream-setting.php:262
 msgid "Then, you can choose to use the list as a OR combination of tags (to return photos that have <b>any</b> tag), or an AND combination (to return photos that have <b>all</b> the tags)."
 msgstr "Poi puoi scegliere di utilizzare la lista come una combinazione di tag in OR (specificando \"any\"), oppure una combinazione in AND (specificando \"all\")."
 
-#: ../flickr-photostream-setting.php:256
+#: ../flickr-photostream-setting.php:263
 msgid "To do this, you need to use the <code>tags_mode</code>, specifying \"any\" or \"all\". For example:"
 msgstr "Per fare ciò, devi utilizzare <code>tags_mode</code>, specificando \"any\" oppure \"all\". Per esempio:"
 
-#: ../flickr-photostream-setting.php:259
+#: ../flickr-photostream-setting.php:266
 msgid "Displays photos with all the tags listed (the list is viewed as an AND combination)."
 msgstr "Mostra le foto che hanno tutti i tag listati (la lista è vista come una combinazione in AND)."
 
-#: ../flickr-photostream-setting.php:262
+#: ../flickr-photostream-setting.php:269
 msgid "Remember that, if the photo that you want to display is owned by the default user (specified in the settings), you don't need the <code>user_id</code> attribute in the shortcode."
 msgstr "Ricorda che, se le foto che vuoi mostrare sono possedute dall'utente di default (specificato nelle impostazioni), puoi anche non utilizzare l'attributo <code>user_id</code> nello shortcode."
 
-#: ../flickr-photostream-setting.php:270
+#: ../flickr-photostream-setting.php:277
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: ../flickr-photostream-setting.php:274
+#: ../flickr-photostream-setting.php:281
 msgid "Global Settings"
 msgstr "Impostazioni Globali"
 
-#: ../flickr-photostream-setting.php:287
+#: ../flickr-photostream-setting.php:294
 msgid "Get your Flickr API Key from "
 msgstr "Ottieni la tua Flickr API Key da "
 
-#: ../flickr-photostream-setting.php:288
+#: ../flickr-photostream-setting.php:295
 msgid "You can't use an attribute to change this setting"
 msgstr "Non puoi utilizzare un attributo per modificare questa impostazione"
 
-#: ../flickr-photostream-setting.php:294
+#: ../flickr-photostream-setting.php:301
 msgid "Default Settings"
 msgstr "Impostazioni di Default"
 
-#: ../flickr-photostream-setting.php:298
+#: ../flickr-photostream-setting.php:305
 msgid "User ID"
 msgstr "ID Utente"
 
-#: ../flickr-photostream-setting.php:305
+#: ../flickr-photostream-setting.php:312
 msgid "Get the User ID from "
 msgstr "Ottieni l'ID Utente da "
 
-#: ../flickr-photostream-setting.php:306
-#: ../flickr-photostream-setting.php:317
-#: ../flickr-photostream-setting.php:328
-#: ../flickr-photostream-setting.php:342
-#: ../flickr-photostream-setting.php:356
-#: ../flickr-photostream-setting.php:370
-#: ../flickr-photostream-setting.php:387
-#: ../flickr-photostream-setting.php:401
-#: ../flickr-photostream-setting.php:413
+#: ../flickr-photostream-setting.php:313
+#: ../flickr-photostream-setting.php:324
+#: ../flickr-photostream-setting.php:335
+#: ../flickr-photostream-setting.php:349
+#: ../flickr-photostream-setting.php:363
+#: ../flickr-photostream-setting.php:377
+#: ../flickr-photostream-setting.php:394
+#: ../flickr-photostream-setting.php:408
+#: ../flickr-photostream-setting.php:420
+#: ../flickr-photostream-setting.php:434
 msgid "You can use the <code>"
 msgstr "Puoi utilizzare l'attributo <code>"
 
-#: ../flickr-photostream-setting.php:306
-#: ../flickr-photostream-setting.php:317
-#: ../flickr-photostream-setting.php:328
-#: ../flickr-photostream-setting.php:413
+#: ../flickr-photostream-setting.php:313
+#: ../flickr-photostream-setting.php:324
+#: ../flickr-photostream-setting.php:335
+#: ../flickr-photostream-setting.php:420
 msgid "</code> attribute to change this default value"
 msgstr "</code> per cambiare il valore di default"
 
-#: ../flickr-photostream-setting.php:311
+#: ../flickr-photostream-setting.php:318
 msgid "Images Height (in px)"
 msgstr "Altezza Immagini (in px)"
 
-#: ../flickr-photostream-setting.php:322
+#: ../flickr-photostream-setting.php:329
 msgid "Maximum number of photos per page"
 msgstr "Massimo numero di foto per pagina"
 
-#: ../flickr-photostream-setting.php:333
+#: ../flickr-photostream-setting.php:340
 msgid "Justify Last Row"
 msgstr "Giustifica l'ultima riga"
 
-#: ../flickr-photostream-setting.php:341
+#: ../flickr-photostream-setting.php:348
 msgid "If enabled, the last row will be justified. In this case the last images can be very bigger than the others."
 msgstr "Se abilitato, le immagini dell'ultima riga saranno giustificate. In questo caso le ultime immagini potranno essere molto più grandi rispetto alle altre."
 
-#: ../flickr-photostream-setting.php:342
-#: ../flickr-photostream-setting.php:356
-#: ../flickr-photostream-setting.php:401
+#: ../flickr-photostream-setting.php:349
+#: ../flickr-photostream-setting.php:363
+#: ../flickr-photostream-setting.php:408
+#: ../flickr-photostream-setting.php:434
 msgid "</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)"
 msgstr "</code> per cambiare il valore di default (con i valori <code>true</code> o <code>false</code>)."
 
-#: ../flickr-photostream-setting.php:347
+#: ../flickr-photostream-setting.php:354
 msgid "Fixed Height"
 msgstr "Altezza fissata"
 
-#: ../flickr-photostream-setting.php:355
+#: ../flickr-photostream-setting.php:362
 msgid "If enabled, each row has the same height, but the images will be cut more."
 msgstr "Se abilitato, ogni riga avrà la stessa altezza, quindi le immagini potranno essere maggiormente tagliate."
 
-#: ../flickr-photostream-setting.php:361
+#: ../flickr-photostream-setting.php:368
 msgid "Pagination"
 msgstr "Paginazione"
 
-#: ../flickr-photostream-setting.php:369
+#: ../flickr-photostream-setting.php:376
 msgid "If enabled, navigation buttons will be shown, and you can see the older photos.<br/><i>Use only one instance per page with this settings enabled!</i>"
 msgstr "Se abilitato,  verranno mostrati dei pulsanti di navigazione e si potranno visualizzare le pagine delle foto meno recenti.<br/><i>Per ogni pagina, utilizza solo un istanza con questa opzione abilitata!</i>"
 
-#: ../flickr-photostream-setting.php:370
+#: ../flickr-photostream-setting.php:377
 msgid "</code> attribute to change this default value (with the value <code>none</code>, <code>prevnext</code> or <code>numbers</code>)"
 msgstr "</code> per cambiare il valore di default (con i valori <code>none</code>, <code>prevnext</code> o <code>numbers</code>)."
 
-#: ../flickr-photostream-setting.php:375
+#: ../flickr-photostream-setting.php:382
 msgid "Lightbox"
 msgstr "Lightbox"
 
-#: ../flickr-photostream-setting.php:384
+#: ../flickr-photostream-setting.php:391
 msgid "With Colorbox, make sure that you have installed it with a plugin (i.e. "
 msgstr "Con Colorbox, assicurati di averlo installato con un plugin (i.e. "
 
-#: ../flickr-photostream-setting.php:385
+#: ../flickr-photostream-setting.php:392
 msgid "On the contrary, Swipebox comes with this plugin and you don't have to provide it with another plugin."
 msgstr "Al contrario, Swipebox viene fornito insieme al plugin e non devi necessariamente fornirlo installando un altro plugin."
 
-#: ../flickr-photostream-setting.php:387
+#: ../flickr-photostream-setting.php:394
 msgid "</code> attribute to change this default value (with the value <code>none</code>, <code>colorbox</code> or <code>swipebox</code>)."
 msgstr "</code> per cambiare il valore di default (con i valori <code>none</code>, <code>colorbox</code> or <code>swipebox</code>)."
 
-#: ../flickr-photostream-setting.php:392
+#: ../flickr-photostream-setting.php:399
 msgid "Captions"
 msgstr "Etichette"
 
-#: ../flickr-photostream-setting.php:400
+#: ../flickr-photostream-setting.php:407
 msgid "If enabled, the title of the photo will be shown over the image when the mouse is over. Note: <i>captions, with small images, become aesthetically unpleasing</i>."
 msgstr "Se abilitata, il titolo della foto verrà mostrato sopra l'immagine quando il mouse sarà sopra di essa. Nota: <i>quando l'altezza delle immagini è troppo piccola, le etichette diventano esteticamente sgradevoli</i>."
 
-#: ../flickr-photostream-setting.php:406
+#: ../flickr-photostream-setting.php:413
 msgid "Margin between the images"
 msgstr "Margine tra le immagini"
 
-#: ../flickr-photostream-setting.php:420
+#: ../flickr-photostream-setting.php:425
+msgid "Use large thumbnails"
+msgstr "Utilizza miniature grandi"
+
+#: ../flickr-photostream-setting.php:433
+msgid "If you have uploaded small images in Flickr, it doesn't have large thumbnails, and the gallery can't show these images. Disable this option if you see that the large thumbnails don't appear."
+msgstr "Se hai uplodato immagini piccole su Flickr, allora non avrà calcolato delle minature grandi, e la galleria potrebbe non riuscire a mostrare alcune immagini. Disabilita quest'opzione se non vedi apparire alcune immagini nella galleria."
+
+#: ../flickr-photostream-setting.php:441
 msgid "Save Changes"
 msgstr "Salva le modifiche"
 
-#: ../flickr-photostream-setting.php:427
+#: ../flickr-photostream-setting.php:448
 msgid "Help the project"
 msgstr "Aiuta il progetto"
 
-#: ../flickr-photostream-setting.php:430
+#: ../flickr-photostream-setting.php:451
 msgid "Help the project to grow. Donate something, or simply <a href=\"http://wordpress.org/plugins/flickr-photostream\" target=\"_blank\">rate the plugin on Wordpress</a>."
 msgstr "Aiuta il progetto a crescere. Dona qualcosa, o semplicemente <a href=\"http://wordpress.org/plugins/flickr-photostream\" target=\"_blank\">recensisci il plugin su Wordpress</a>."
 
@@ -293,55 +303,55 @@ msgstr "Aiuta il progetto a crescere. Dona qualcosa, o semplicemente <a href=\"h
 msgid "Flickr Photostream can't be activated: the cache Folder is not writable"
 msgstr "Flickr Photostream non può essere attivato: la cartella chache non è scrivibile"
 
-#: ../flickr-photostream.php:75
+#: ../flickr-photostream.php:76
 msgid "FlickrPhotostream error"
 msgstr "Errore FlickrPhotostream"
 
-#: ../flickr-photostream.php:81
+#: ../flickr-photostream.php:82
 msgid "Flickr API error"
 msgstr "Errore Flickr API"
 
-#: ../flickr-photostream.php:148
+#: ../flickr-photostream.php:158
 msgid "You must specify the user_id for this action, using the \"user_id\" attribute"
 msgstr "Bisogna specificare l'user_id per quest'azione, utilizzando l'attributo \"user_id\""
 
-#: ../flickr-photostream.php:153
+#: ../flickr-photostream.php:163
 msgid "You must specify the id of the gallery, using the \"id\" attribute"
 msgstr "Bisogna specificare l'id della galleria, utilizzando l'attributo \"id\""
 
-#: ../flickr-photostream.php:158
+#: ../flickr-photostream.php:168
 msgid "You must specify the id of the set, using the \"id\" attribute"
 msgstr "Devi specificare l'id del set, utilizzando l'attributo \"id\"."
 
-#: ../flickr-photostream.php:163
+#: ../flickr-photostream.php:173
 msgid "You must specify the tags using the \"tags\" attribute"
 msgstr "Bisogna specificare i tag utilizzando l'attributo \"tags\""
 
-#: ../flickr-photostream.php:165
+#: ../flickr-photostream.php:175
 msgid "You must specify a valid tags_mode: \"any\" or \"all\""
 msgstr "Bisogna specificare un tags_mode valito: \"any\" oppure \"all\""
 
-#: ../flickr-photostream.php:170
+#: ../flickr-photostream.php:180
 msgid "You must specify the id of the group, using the \"id\" attribute"
 msgstr "Bisogna specificare l'id del gruppo, utilizzando l'attributo \"id\""
 
-#: ../flickr-photostream.php:174
+#: ../flickr-photostream.php:184
 msgid "The pagination attribute can be only \"none\", \"prevnext\" or \"numbers\"."
 msgstr "L'attributo per la paginazione può essere solamente \"none\", \"prevnext\" or \"numbers\"."
 
-#: ../flickr-photostream.php:178
+#: ../flickr-photostream.php:188
 msgid "The lightbox attribute can be only \"none\", \"colorbox\" or \"swipebox\"."
 msgstr "L'attributo per il lightbox può essere solamente \"none\", \"colorbox\" oppure \"swipebox\"."
 
-#: ../flickr-photostream.php:225
+#: ../flickr-photostream.php:236
 msgid "No photos"
 msgstr "Nessuna foto"
 
-#: ../flickr-photostream.php:346
+#: ../flickr-photostream.php:358
 msgid "<span class=\"meta-nav\">&larr;</span> Older photos"
 msgstr "<span class=\"meta-nav\">&larr;</span> Foto meno recenti"
 
-#: ../flickr-photostream.php:352
+#: ../flickr-photostream.php:364
 msgid "Newer photos <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Foto più recenti <span class=\"meta-nav\">&rarr;</span>"
 

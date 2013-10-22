@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 2.0.5
+Version: 2.1
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -107,6 +107,7 @@ function flickrps_createGallery($action, $atts) {
 		'captions' => (get_option('$flickr_photostream_captions') == 1 ? 'true' : 'false'),
 		'pagination' => get_option('$flickr_photostream_pagination'),
 		'margins' => get_option('$flickr_photostream_margins'),
+		'use_large_thumbnails' => get_option('$use_large_thumbnails')
 	), $atts ) );
 
 	//LEGACY //TODO to remove
@@ -130,6 +131,8 @@ function flickrps_createGallery($action, $atts) {
 	$margins = (int)$margins;
 	if ($margins < 0) $margins = 1;
 	if ($margins > 30) $margins = 30;
+
+	$use_large_thumbnails = ($use_large_thumbnails === 'true');
 
 	if($pagination === 'none') $page_num = 1;
 
@@ -186,9 +189,10 @@ function flickrps_createGallery($action, $atts) {
 	}
 
 	//Photo loading----------------
+	$extras = "description, original_format";
 	if ($action === 'set') {
     	//Show the photos of a particular photoset
-    	$photos = $f->photosets_getPhotos($id, "description", 1, $max_num_photos, $page_num, NULL);	
+    	$photos = $f->photosets_getPhotos($id, $extras, 1, $max_num_photos, $page_num, NULL);	
     	$photos_main_index = 'photoset';
     } else if ($action === 'gal') {
     	//Show the photos of a particular gallery
@@ -198,7 +202,7 @@ function flickrps_createGallery($action, $atts) {
     	$gallery_info = $f->urls_lookupGallery($photos_url[$user_id] . 'galleries/' . $id);
     	if ($f->getErrorCode() != NULL) return(flickrps_formatFlickrAPIError($f->getErrorMsg()));
 
-    	$photos = $f->galleries_getPhotos($gallery_info['gallery']['id'], "description", $max_num_photos, $page_num);	
+    	$photos = $f->galleries_getPhotos($gallery_info['gallery']['id'], $extras, $max_num_photos, $page_num);	
 
     	$photos_main_index = 'photos';
     } else if ($action === 'tag') {
@@ -214,11 +218,11 @@ function flickrps_createGallery($action, $atts) {
     } else if ($action === 'grp') {
     	//Show the photos of a particular group pool
     	//groups_pools_getPhotos ($group_id, $tags = NULL, $user_id = NULL, $jump_to = NULL, $extras = NULL, $per_page = NULL, $page = NULL) {
-    	$photos = $f->groups_pools_getPhotos($id, NULL, NULL, NULL, "description", $max_num_photos, $page_num);	
+    	$photos = $f->groups_pools_getPhotos($id, NULL, NULL, NULL, $extras, $max_num_photos, $page_num);	
     	$photos_main_index = 'photos';
     } else {
     	//Show the classic photostream
-		$photos = $f->people_getPublicPhotos($user_id, NULL, "description", $max_num_photos, $page_num);
+		$photos = $f->people_getPublicPhotos($user_id, NULL, $extras, $max_num_photos, $page_num);
     	
     	//Need the authentication (TODO)
     	//$photos = $f->people_getPhotos($user_id, 
@@ -248,7 +252,7 @@ function flickrps_createGallery($action, $atts) {
 	$photo_array = $photos[$photos_main_index]['photo'];
     foreach ($photo_array as $photo) {
     	if($lightbox !== 'none'){
-			$ris .=	'<a href="' . $f->buildPhotoURL($photo, "large") 
+			$ris .=	'<a href="' . $f->buildPhotoURL($photo, "original") 
 				 .	'" rel="flickrGal' . $shortcode_unique_id 
 				 .	'" title="' . $photo['title'] 
 				 .	'">';
@@ -282,6 +286,10 @@ function flickrps_createGallery($action, $atts) {
 		 .	'\'fixedHeight\':' . ($fixed_height ? 'true' : 'false') . ', '		 
 		 .	'\'captions\':' . ($captions ? 'true' : 'false') . ', '
 		 .	'\'margins\':' . $margins;
+	if (!$use_large_thumbnails) {
+		$ris .= ', \'sizeRangeSuffixes\': {\'lt100\':\'_t\',\'lt240\':\'_m\',\'lt320\':\'_n\',\'lt500\':\'\',\'lt640\':\'_z\',\'lt1024\':\'_z\'}';
+	}
+
 	if ($lightbox === 'colorbox') {
 		$ris .= ', \'onComplete\': ' 
 			 .	'function(gal) {

@@ -71,9 +71,11 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
-= 2.0.5 = 
+= 2.1 = 
 
-* now it works with Photon
+* now it works with Photon.
+* fixed errors for those that don't have large image in flickr (added the 'use large thumbnails' option).
+* now the links display the original pictures and not the large ones, this improve the quality and the compatibility.
 
 = 2.0 =
 

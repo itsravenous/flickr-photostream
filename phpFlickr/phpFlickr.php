@@ -14,6 +14,7 @@
  *		 http://code.google.com/p/phpflickr/issues/list
  *
  * The function buildPhotoURL was changed by Miro Mannino to allow more image size suffixes.
+ * The function buildPhotoURL was changed by Miro Mannino to have the new ulr "staticflickr.com"
  * The function photos_search was changed by Miro Mannino because it didn't use the call method (and it returned a strange format)
  */ 
 if ( !class_exists('phpFlickr') ) {
@@ -375,9 +376,9 @@ if ( !class_exists('phpFlickr') ) {
 			}
 			
 			if ($size == "original") {
-				$url = "http://farm" . $photo['farm'] . ".static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['originalsecret'] . "_o" . "." . $photo['originalformat'];
+				$url = "http://farm" . $photo['farm'] . ".staticflickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['originalsecret'] . "_o" . "." . $photo['originalformat'];
 			} else {
-				$url = "http://farm" . $photo['farm'] . ".static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . $sizes[$size] . ".jpg";
+				$url = "http://farm" . $photo['farm'] . ".staticflickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . $sizes[$size] . ".jpg";
 			}
 			return $url;
 		}
