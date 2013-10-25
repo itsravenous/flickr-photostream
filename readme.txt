@@ -71,6 +71,10 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
+= 2.2.1 =
+
+* changed the available size behavior. Some Flickr images is very very huge! Now it try to show the large size image in the lightbox, it this is not available try to show the original image, and if this is not available show the medium size. Unfortunately, Flickr doesn't store very large sizes (only the original). 
+
 = 2.2 =
 
 * removed the setting 'use large thumbnails': founded a way to determine it automatically
