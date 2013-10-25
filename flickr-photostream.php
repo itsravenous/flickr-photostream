@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 2.1
+Version: 2.2
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -106,8 +106,7 @@ function flickrps_createGallery($action, $atts) {
 		'lightbox' => get_option('$flickr_photostream_lightbox'),
 		'captions' => (get_option('$flickr_photostream_captions') == 1 ? 'true' : 'false'),
 		'pagination' => get_option('$flickr_photostream_pagination'),
-		'margins' => get_option('$flickr_photostream_margins'),
-		'use_large_thumbnails' => get_option('$use_large_thumbnails')
+		'margins' => get_option('$flickr_photostream_margins')		
 	), $atts ) );
 
 	//LEGACY //TODO to remove
@@ -131,8 +130,6 @@ function flickrps_createGallery($action, $atts) {
 	$margins = (int)$margins;
 	if ($margins < 0) $margins = 1;
 	if ($margins > 30) $margins = 30;
-
-	$use_large_thumbnails = ($use_large_thumbnails === 'true');
 
 	if($pagination === 'none') $page_num = 1;
 
@@ -189,7 +186,7 @@ function flickrps_createGallery($action, $atts) {
 	}
 
 	//Photo loading----------------
-	$extras = "description, original_format";
+	$extras = "description, original_format, url_l, url_z";
 	if ($action === 'set') {
     	//Show the photos of a particular photoset
     	$photos = $f->photosets_getPhotos($id, $extras, 1, $max_num_photos, $page_num, NULL);	
@@ -249,13 +246,28 @@ function flickrps_createGallery($action, $atts) {
 
 	$r = 0;
 
+	$use_large_thumbnails = true;
+
 	$photo_array = $photos[$photos_main_index]['photo'];
     foreach ($photo_array as $photo) {
-    	if($lightbox !== 'none'){
-			$ris .=	'<a href="' . $f->buildPhotoURL($photo, "original") 
-				 .	'" rel="flickrGal' . $shortcode_unique_id 
+    	if (!isset($photo['url_l'])) {
+    		$use_large_thumbnails = false;
+    	}
+
+    	if($lightbox !== 'none') {
+    		$ris .=	'<a href="';
+    		if (isset($photo['originalsecret'])) {
+	    		 $ris .= $f->buildPhotoURL($photo, "original");
+			} else if (isset($photo['url_l'])){
+				$ris .= $photo['url_l'];
+			} else {
+				$ris .= $photo['url_z'];
+			}
+
+			$ris .= '" rel="flickrGal' . $shortcode_unique_id 
 				 .	'" title="' . $photo['title'] 
-				 .	'">';
+			 	 .	'">';	
+			
 		}else{
 
 			//If it is a gallery the photo has an owner, else is the photoset owner (or the photostream owner)

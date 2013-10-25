@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 2.1
+Version: 2.2
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -56,9 +56,6 @@ if(!function_exists( 'flickrps_plugin_uninstall')){
 		if(get_option('$flickr_photostream_margins')){
 			delete_option('$flickr_photostream_margins');
 		}
-		if(get_option('$flickr_photostream_largethumbnails')){
-			delete_option('$flickr_photostream_largethumbnails');
-		}
 	}
 }
 
@@ -79,7 +76,6 @@ function flickr_photostream_setting(){
 	$flickr_photostream_lightbox_default = 'none';
 	$flickr_photostream_captions_default = '1';
 	$flickr_photostream_margins_default = '1';
-	$flickr_photostream_margins_largethumbnails_default = '1';
 
 
 	//Get Values
@@ -93,7 +89,6 @@ function flickr_photostream_setting(){
 	$flickr_photostream_lightbox_saved = get_option('$flickr_photostream_lightbox', $flickr_photostream_lightbox_default);
 	$flickr_photostream_captions_saved = (int)get_option('$flickr_photostream_captions', $flickr_photostream_captions_default);
 	$flickr_photostream_margins_saved = (int)get_option('$flickr_photostream_margins', $flickr_photostream_margins_default);
-	$flickr_photostream_largethumbnails_saved = (int)get_option('$flickr_photostream_largethumbnails', $flickr_photostream_largethumbnails_default);
 	    
 	//Save Values
     if(isset($_POST['Submit'])){
@@ -135,7 +130,6 @@ function flickr_photostream_setting(){
         $flickr_photostream_lightbox_saved = $_POST["flickr_photostream_lightbox"];
         $flickr_photostream_captions_saved = ((int)$_POST["flickr_photostream_captions"] != 0)? 1:0;
         $flickr_photostream_margins_saved = (int)$_POST["flickr_photostream_margins"];
-        $flickr_photostream_largethumbnails_saved = ((int)$_POST["flickr_photostream_largethumbnails"] != 0)? 1:0;
        	if ($flickr_photostream_margins_saved <= 0 || $flickr_photostream_margins_saved > 30){
        		$error = true;
        		$error_msg .= '<li>' . __('The \'Margins\' field must have a value greater than 0, and not greater than 30', 'flickr-photostream' ) . '</li>';
@@ -152,7 +146,6 @@ function flickr_photostream_setting(){
 	        update_option( '$flickr_photostream_lightbox', $flickr_photostream_lightbox_saved );
 	        update_option( '$flickr_photostream_captions', $flickr_photostream_captions_saved );
 	        update_option( '$flickr_photostream_margins', $flickr_photostream_margins_saved );
-	        update_option( '$flickr_photostream_largethumbnails', $flickr_photostream_largethumbnails_saved );
 ?>
 		<div class="updated">
 			<p><strong><?php _e('Settings updated.', 'flickr-photostream' ); ?></strong></p>
@@ -418,20 +411,6 @@ function flickr_photostream_setting(){
 											style="margin-right:10px"
 										/>
 										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'margins' . __('</code> attribute to change this default value', 'flickr-photostream') ); ?></div>
-									</label> 	
-								</td>
-							</tr>
-							<tr>
-								<th scope="row"><?php _e('Use large thumbnails', 'flickr-photostream' ); ?></th>
-								<td>
-									<label for="flickr_photostream_largethumbnails">
-										<input type="checkbox" name="flickr_photostream_largethumbnails" 
-											<?php if($flickr_photostream_largethumbnails_saved== 1){ echo('checked="checked"'); }; ?> 
-											value="1"
-											style="margin-right:5px"
-										/>
-										<?php _e('If you have uploaded small images in Flickr, it doesn\'t have large thumbnails, and the gallery can\'t show these images. Disable this option if you see that the large thumbnails don\'t appear.', 'flickr-photostream' ); ?>
-										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'use_large_thumbnails' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
 									</label> 	
 								</td>
 							</tr>
