@@ -206,7 +206,7 @@ function flickrps_createGallery($action, $atts) {
 		$photos = $f->photos_search(array(
 			'user_id' => $user_id,
 			'tags' => $tags,
-			'tags_mode' => $tags_mode,
+			'tag_mode' => $tags_mode,
 			'extras' => $extras,
 			'per_page"' => $max_num_photos, 
 			'page' => $page_num
