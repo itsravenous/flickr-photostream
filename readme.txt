@@ -3,7 +3,7 @@ Contributors: miro.mannino
 Donate link: http://miromannino.com/projects/flickr-photostream/#helptheproject
 Tags: photography, gallery, photo, flickr, photostream, set, justified, grid
 Requires at least: 3.0
-Tested up to: 3.6.1
+Tested up to: 3.7.1
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
@@ -71,9 +71,11 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
-= 2.2.1 =
+= 2.2.2 =
 
 * changed the available size behavior. Some Flickr images is very very huge! Now it try to show the large size image in the lightbox, it this is not available try to show the original image, and if this is not available show the medium size. Unfortunately, Flickr doesn't store very large sizes (only the original). 
+
+* fixed a bug with tags
 
 = 2.2 =
 
