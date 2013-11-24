@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 2.2.2
+Version: 2.3
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -333,8 +333,8 @@ function flickrps_createGallery($action, $atts) {
     	
     		if ($pagination === 'numbers') {
 		    	
-		    	$ris .= '<div class="page-links">' . "\n"
-		    		 .	'	<span class="page-links-title">Pages:</span>' . "\n";
+		    	$ris .= '<div class="page-links">'
+		    		 .	'<span class="page-links-title">Pages:</span> ';
 
 		    	$low_num = $page_num - floor($maximum_pages_nums/2);
 		    	$high_num = $page_num + ceil($maximum_pages_nums/2) - 1;
@@ -347,18 +347,18 @@ function flickrps_createGallery($action, $atts) {
 				}
 
 				if ($low_num > 1) {
-					$ris .= '<a href="' . add_query_arg('page', ($low_num - 1), $permalink) . '"><span>...</span></a>' . "\n";
+					$ris .= '<a href="' . add_query_arg('page', ($low_num - 1), $permalink) . '"><span>...</span></a> ';
 				}
 
 		    	for ($i = $low_num; $i <= $high_num; $i++) {
-		    		if ($i == $page_num) $ris .= '<span>' . $i . '</span>' . "\n";
+		    		if ($i == $page_num) $ris .= '<span>' . $i . '</span> ';
 		    		else {
-		    			$ris .= '<a href="' . add_query_arg('page', $i, $permalink) . '"><span>' . $i . '</span></a>' . "\n";
+		    			$ris .= '<a href="' . add_query_arg('page', $i, $permalink) . '"><span>' . $i . '</span></a> ';
 		    		}
 		    	}
 
 		    	if ($high_num < $num_pages) {
-					$ris .= '<a href="' . add_query_arg('page', ($high_num + 1), $permalink) . '"><span>...</span></a>' . "\n";
+					$ris .= '<a href="' . add_query_arg('page', ($high_num + 1), $permalink) . '"><span>...</span></a> ';
 				}
 
 		    	$ris .= '</div>';

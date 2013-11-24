@@ -71,7 +71,9 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
-= 2.2.2 =
+= 2.3 =
+
+* pagination style workaround for themes that use 'pre' tags
 
 * changed the available size behavior. Some Flickr images is very very huge! Now it try to show the large size image in the lightbox, it this is not available try to show the original image, and if this is not available show the medium size. Unfortunately, Flickr doesn't store very large sizes (only the original). 
 
@@ -152,6 +154,12 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+
+* pagination style workaround for themes that use 'pre' tags
+
+* fixed some bugs with tags
 
 = 2.2 =
 

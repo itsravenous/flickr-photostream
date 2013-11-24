@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 2.2.2
+Version: 2.3
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
