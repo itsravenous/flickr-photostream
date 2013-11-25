@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 2.3
+Version: 2.3.1
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -110,8 +110,11 @@ function flickrps_createGallery($action, $atts) {
 	), $atts ) );
 
 	//LEGACY //TODO to remove
-	if($pagination === '0') $pagination = 'none';
 	if($pagination === '1') $pagination = 'prevnext';
+	else if ($pagination !== 'none' 
+		&& $pagination !== 'prevnext' 
+		&& $pagination !== 'numbers') $pagination = 'none';
+
 	if($lightbox === '1') $lightbox = 'colorbox';
 	if($lightbox === '0') $lightbox = 'none';
 
@@ -177,9 +180,9 @@ function flickrps_createGallery($action, $atts) {
 			return(flickrps_formatError(__('You must specify the id of the group, using the "id" attribute', 'flickr-photostream')));	
 	}
 
-	if ($pagination !== 'none' && $pagination !== 'prevnext' && $pagination !== 'numbers') {
+	/*if ($pagination !== 'none' && $pagination !== 'prevnext' && $pagination !== 'numbers') {
 		return(flickrps_formatError(__('The pagination attribute can be only "none", "prevnext" or "numbers".', 'flickr-photostream')));		
-	}
+	}*/
 
 	if ($lightbox !== 'none' && $lightbox !== 'colorbox' && $lightbox !== 'swipebox') {
 		return(flickrps_formatError(__('The lightbox attribute can be only "none", "colorbox" or "swipebox".', 'flickr-photostream')));		
