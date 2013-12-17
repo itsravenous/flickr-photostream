@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 2.3.1
+Version: 2.3.2
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -211,7 +211,7 @@ function flickrps_createGallery($action, $atts) {
 			'tags' => $tags,
 			'tag_mode' => $tags_mode,
 			'extras' => $extras,
-			'per_page"' => $max_num_photos, 
+			'per_page' => $max_num_photos, 
 			'page' => $page_num
 		));
     	$photos_main_index = 'photos';
@@ -309,8 +309,8 @@ function flickrps_createGallery($action, $atts) {
 
 	if ($lightbox === 'colorbox') {
 		$ris .= ', \'onComplete\': ' 
-			 .	'function(gal) {
-					jQuery(gal).find(".jg-image > a").colorbox({
+			 .	'function() {
+					jQuery("#flickrGal' . $shortcode_unique_id . '").find(".jg-image > a").colorbox({
 						maxWidth : "85%",
 						maxHeight : "85%",
 						current : ""
@@ -318,8 +318,8 @@ function flickrps_createGallery($action, $atts) {
 				}';
 	} else if ($lightbox === 'swipebox') {
 		$ris .= ', \'onComplete\': ' 
-			 .	'function(gal) {			 	
-					jQuery(gal).find(".jg-image > a").swipebox();
+			 .	'function() {			 	
+					jQuery("#flickrGal' . $shortcode_unique_id . '").find(".jg-image > a").swipebox();
 				}';
 	}
 	$ris .= '});'

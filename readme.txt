@@ -71,9 +71,11 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
-= 2.3.1 =
+= 2.3.2 =
 
 * pagination style workaround for themes that use 'pre' tags
+
+* workaround for a swipe box bug, when there are more than one justified gallery in one page
 
 * pagination settings error (changed the behavior for those people that founded usage problems)
 
