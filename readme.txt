@@ -71,6 +71,14 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
+= 2.4 =
+
+* Justified gallery 3.0
+
+* Randomize order
+
+* Capability to show the original images in the lightbox
+
 = 2.3.2 =
 
 * pagination style workaround for themes that use 'pre' tags
