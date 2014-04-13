@@ -74,6 +74,9 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 = 2.4 =
 
 * Justified gallery 3.0
+	* Less images crops 
+	* Faster load (rows appear when are ready)
+	* No more white spaces when the images are loading
 * Randomize order
 * Capability to show the original images in the lightbox
 
