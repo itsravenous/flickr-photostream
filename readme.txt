@@ -46,7 +46,7 @@ See a Live Demo in [Miro Mannino's Blog](http://miromannino.com/my-photos)
 1. Upload the folder `flickr-photostream` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure the plugin settings through the 'Settings > Flickr Photostream' page.
-4. Set the API key and the default User ID
+4. Remember to set also the API key and the default User ID
 5. Create a page with the shortcode `[flickr_photostream]` to show the specified user photostream (you can add attributes in the shortcode, to show set, gallery or simply to have settings that are different than the default).
 6. (optional) If you want to use Colorbox, install a Colorbox plugin (i.e. [JQuery Colorbox](http://www.techotronic.de/plugins/jquery-colorbox/)). Then, check the settings the lightbox option.
 
