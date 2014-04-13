@@ -74,21 +74,15 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 = 2.4 =
 
 * Justified gallery 3.0
-
 * Randomize order
-
 * Capability to show the original images in the lightbox
 
 = 2.3.2 =
 
 * pagination style workaround for themes that use 'pre' tags
-
 * workaround for a swipe box bug, when there are more than one justified gallery in one page
-
 * pagination settings error (changed the behavior for those people that founded usage problems)
-
 * changed the available size behavior. Some Flickr images is very very huge! Now it try to show the large size image in the lightbox, it this is not available try to show the original image, and if this is not available show the medium size. Unfortunately, Flickr doesn't store very large sizes (only the original). 
-
 * fixed some bugs with tags
 
 = 2.2 =
