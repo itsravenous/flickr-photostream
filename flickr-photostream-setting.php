@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 2.4
+Version: 2.4.1
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -24,43 +24,37 @@ Photostream Wordpress Plugin.  If not, see <http://www.gnu.org/licenses/>.
 
 //uninstall plugin, remove the options for privacy
 register_uninstall_hook( __FILE__, 'flickrps_plugin_uninstall');
-if (!function_exists( 'flickrps_plugin_uninstall')) {
-	function flickrps_plugin_uninstall() {
-		if (get_option('$flickr_photostream_userID')) {
+if(!function_exists( 'flickrps_plugin_uninstall')){
+	function flickrps_plugin_uninstall(){
+		if(get_option('$flickr_photostream_userID')){
 			delete_option('$flickr_photostream_userID');
 		}
-		if (get_option('$flickr_photostream_APIKey')) {
+		if(get_option('$flickr_photostream_APIKey')){
 			delete_option('$flickr_photostream_APIKey');
 		}
-		if (get_option('$flickr_photostream_maxPhotosPP')) {
+		if(get_option('$flickr_photostream_maxPhotosPP')){
 			delete_option('$flickr_photostream_maxPhotosPP');
 		}
-		if (get_option('$flickr_photostream_imagesHeight')) {
+		if(get_option('$flickr_photostream_imagesHeight')){
 			delete_option('$flickr_photostream_imagesHeight');
 		}
-		if (get_option('$flickr_photostream_lastRow')) {
-			delete_option('$flickr_photostream_lastRow');
+		if(get_option('$flickr_photostream_justifyLastRow')){
+			delete_option('$flickr_photostream_justifyLastRow');
 		}
-		if (get_option('$flickr_photostream_fixedHeight')) {
+		if(get_option('$flickr_photostream_fixedHeight')){
 			delete_option('$flickr_photostream_fixedHeight');
 		}
-		if (get_option('$flickr_photostream_pagination')) {
+		if(get_option('$flickr_photostream_pagination')){
 			delete_option('$flickr_photostream_pagination');
 		}
-		if (get_option('$flickr_photostream_lightbox')) {
+		if(get_option('$flickr_photostream_lightbox')){
 			delete_option('$flickr_photostream_lightbox');
 		}
-		if (get_option('$flickr_photostream_captions')) {
+		if(get_option('$flickr_photostream_captions')){
 			delete_option('$flickr_photostream_captions');
 		}
-		if (get_option('$flickr_photostream_randomize')) {
-			delete_option('$flickr_photostream_randomize');
-		}
-		if (get_option('$flickr_photostream_margins')) {
+		if(get_option('$flickr_photostream_margins')){
 			delete_option('$flickr_photostream_margins');
-		}
-		if (get_option('$flickr_photostream_openOriginals')) {
-			delete_option('$flickr_photostream_openOriginals');
 		}
 	}
 }
@@ -71,98 +65,94 @@ function flickr_photostream_admin_add_page() {
 	add_options_page('FlickrPhotostreamSettings', 'Flickr Photostream', 10, 'flickrps', 'flickr_photostream_setting');
 }
 
-function flickr_photostream_setting() {
-	global $flickr_photostream_imagesHeight_default;
-	global $flickr_photostream_maxPhotosPP_default;
-	global $flickr_photostream_lastRow_default;
-	global $flickr_photostream_fixedHeight_default;
-	global $flickr_photostream_pagination_default;
-	global $flickr_photostream_lightbox_default;
-	global $flickr_photostream_captions_default;
-	global $flickr_photostream_randomize_default;
-	global $flickr_photostream_margins_default;
-	global $flickr_photostream_openOriginals_default;
+function flickr_photostream_setting(){
+
+	//Default values
+	$flickr_photostream_imagesHeight_default = '120';
+	$flickr_photostream_maxPhotosPP_default = '20';
+	$flickr_photostream_justifyLastRow_default = '1';
+	$flickr_photostream_fixedHeight_default = '0';
+	$flickr_photostream_pagination_default = 'none';
+	$flickr_photostream_lightbox_default = 'none';
+	$flickr_photostream_captions_default = '1';
+	$flickr_photostream_margins_default = '1';
+
 
 	//Get Values
 	$flickr_photostream_userID_saved = get_option('$flickr_photostream_userID', "");
 	$flickr_photostream_APIKey_saved = get_option('$flickr_photostream_APIKey', "");
 	$flickr_photostream_imagesHeight_saved = (int)get_option('$flickr_photostream_imagesHeight', $flickr_photostream_imagesHeight_default);
 	$flickr_photostream_maxPhotosPP_saved = (int)get_option('$flickr_photostream_maxPhotosPP', $flickr_photostream_maxPhotosPP_default);
-	$flickr_photostream_lastRow_saved = (int)get_option('$flickr_photostream_lastRow', $flickr_photostream_lastRow_default);
+	$flickr_photostream_justifyLastRow_saved = (int)get_option('$flickr_photostream_justifyLastRow', $flickr_photostream_justifyLastRow_default);
 	$flickr_photostream_fixedHeight_saved = (int)get_option('$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_default);
 	$flickr_photostream_pagination_saved = get_option('$flickr_photostream_pagination', $flickr_photostream_pagination_default);
 	$flickr_photostream_lightbox_saved = get_option('$flickr_photostream_lightbox', $flickr_photostream_lightbox_default);
 	$flickr_photostream_captions_saved = (int)get_option('$flickr_photostream_captions', $flickr_photostream_captions_default);
-	$flickr_photostream_randomize_saved = (int)get_option('$flickr_photostream_randomize', $flickr_photostream_randomize_default);
 	$flickr_photostream_margins_saved = (int)get_option('$flickr_photostream_margins', $flickr_photostream_margins_default);
-	$flickr_photostream_openOriginals_saved = (int)get_option('$flickr_photostream_openOriginals', $flickr_photostream_openOriginals_default);
-	
+	    
 	//Save Values
-	if (isset($_POST['Submit'])) {
+    if(isset($_POST['Submit'])){
 
-		$error = false;
-		$error_msg = "";
+    	$error = false;
+    	$error_msg = "";
 
 		//Check the API Key
 		require_once("phpFlickr/phpFlickr.php");
 		$flickr_photostream_APIKey_saved = $_POST["flickr_photostream_APIKey"];
 		$f = new phpFlickr($flickr_photostream_APIKey_saved);
 
-		if ($f->test_echo() == false) {
+		if($f->test_echo() == false){
 			$error = true;
-			$error_msg .=	'<li>' . __('API Key is not valid', 'flickr-photostream' ) . '</li>'; 
+			$error_msg .=  '<li>' . __('API Key is not valid', 'flickr-photostream' ) . '</li>'; 
 		}
 
 		$flickr_photostream_userID_saved = $_POST["flickr_photostream_userID"];
-		if (!$error) {
-			if ($f->urls_getUserProfile($flickr_photostream_userID_saved) == false) {
+		if(!$error){
+			if($f->urls_getUserProfile($flickr_photostream_userID_saved) == false){
 				$error = true;
-				$error_msg .=	'<li>' . __('Invalid UserID', 'flickr-photostream' ) . '</li>'; 		
+				$error_msg .=  '<li>' . __('Invalid UserID', 'flickr-photostream' ) . '</li>'; 		
 			}
 		}
 
-		$flickr_photostream_imagesHeight_saved = (int)$_POST["flickr_photostream_imagesHeight"];
-		if ($flickr_photostream_imagesHeight_saved < 30) {
-			$error = true;
-			$error_msg .= '<li>' . __('The \'Images Height\' field must have a value greater than or equal to 30', 'flickr-photostream' ) . '</li>';
-		}
-		$flickr_photostream_maxPhotosPP_saved = (int)$_POST["flickr_photostream_maxPhotosPP"];
-		if ($flickr_photostream_maxPhotosPP_saved <= 0) {
-			$error = true;
-			$error_msg .= '<li>' . __('The \'Photos per page\' field must have a value greater than 0', 'flickr-photostream' ) . '</li>';
-		}
-		$flickr_photostream_lastRow_saved = $_POST["flickr_photostream_lastRow"];
-		$flickr_photostream_fixedHeight_saved = ((int)$_POST["flickr_photostream_fixedHeight"] != 0)? 1:0;
-		$flickr_photostream_pagination_saved = $_POST["flickr_photostream_pagination"];
-		$flickr_photostream_lightbox_saved = $_POST["flickr_photostream_lightbox"];
-		$flickr_photostream_captions_saved = ((int)$_POST["flickr_photostream_captions"] != 0)? 1:0;
-		$flickr_photostream_randomize_saved = ((int)$_POST["flickr_photostream_randomize"] != 0)? 1:0;
-		$flickr_photostream_margins_saved = (int)$_POST["flickr_photostream_margins"];
-		$flickr_photostream_openOriginals_saved = ((int)$_POST["flickr_photostream_openOriginals"] != 0)? 1:0;
-		if ($flickr_photostream_margins_saved <= 0 || $flickr_photostream_margins_saved > 30) {
-			$error = true;
-			$error_msg .= '<li>' . __('The \'Margins\' field must have a value greater than 0, and not greater than 30', 'flickr-photostream' ) . '</li>';
-		}
+        $flickr_photostream_imagesHeight_saved = (int)$_POST["flickr_photostream_imagesHeight"];
+        if ($flickr_photostream_imagesHeight_saved < 30){
+       		$error = true;
+       		$error_msg .= '<li>' . __('The \'Images Height\' field must have a value greater than or equal to 30', 'flickr-photostream' ) . '</li>';
+       	}
+       	$flickr_photostream_maxPhotosPP_saved = (int)$_POST["flickr_photostream_maxPhotosPP"];
+       	if ($flickr_photostream_maxPhotosPP_saved <= 0){
+       		$error = true;
+       		$error_msg .= '<li>' . __('The \'Photos per page\' field must have a value greater than 0', 'flickr-photostream' ) . '</li>';
+       	}
+        $flickr_photostream_justifyLastRow_saved = ((int)$_POST["flickr_photostream_justifyLastRow"] != 0)? 1:0;
+        $flickr_photostream_fixedHeight_saved = ((int)$_POST["flickr_photostream_fixedHeight"] != 0)? 1:0;
+        $flickr_photostream_pagination_saved = $_POST["flickr_photostream_pagination"];
+        $flickr_photostream_lightbox_saved = $_POST["flickr_photostream_lightbox"];
+        $flickr_photostream_captions_saved = ((int)$_POST["flickr_photostream_captions"] != 0)? 1:0;
+        $flickr_photostream_margins_saved = (int)$_POST["flickr_photostream_margins"];
+       	if ($flickr_photostream_margins_saved <= 0 || $flickr_photostream_margins_saved > 30){
+       		$error = true;
+       		$error_msg .= '<li>' . __('The \'Margins\' field must have a value greater than 0, and not greater than 30', 'flickr-photostream' ) . '</li>';
+       	}
 
-		if ($error == false) {
+        if($error == false){
 			update_option( '$flickr_photostream_APIKey', $flickr_photostream_APIKey_saved );
-			update_option( '$flickr_photostream_userID', $flickr_photostream_userID_saved );
+	        update_option( '$flickr_photostream_userID', $flickr_photostream_userID_saved );
 			update_option( '$flickr_photostream_imagesHeight', $flickr_photostream_imagesHeight_saved );
-			update_option( '$flickr_photostream_maxPhotosPP', $flickr_photostream_maxPhotosPP_saved );
-			update_option( '$flickr_photostream_lastRow', $flickr_photostream_lastRow_saved );
-			update_option( '$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_saved );
-			update_option( '$flickr_photostream_pagination', $flickr_photostream_pagination_saved );
-			update_option( '$flickr_photostream_lightbox', $flickr_photostream_lightbox_saved );
-			update_option( '$flickr_photostream_captions', $flickr_photostream_captions_saved );
-			update_option( '$flickr_photostream_randomize', $flickr_photostream_randomize_saved );
-			update_option( '$flickr_photostream_margins', $flickr_photostream_margins_saved );
-			update_option( '$flickr_photostream_openOriginals', $flickr_photostream_openOriginals_saved );
+	        update_option( '$flickr_photostream_maxPhotosPP', $flickr_photostream_maxPhotosPP_saved );
+	        update_option( '$flickr_photostream_justifyLastRow', $flickr_photostream_justifyLastRow_saved );
+	        update_option( '$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_saved );
+	        update_option( '$flickr_photostream_pagination', $flickr_photostream_pagination_saved );
+	        update_option( '$flickr_photostream_lightbox', $flickr_photostream_lightbox_saved );
+	        update_option( '$flickr_photostream_captions', $flickr_photostream_captions_saved );
+	        update_option( '$flickr_photostream_margins', $flickr_photostream_margins_saved );
 ?>
 		<div class="updated">
 			<p><strong><?php _e('Settings updated.', 'flickr-photostream' ); ?></strong></p>
 		</div>
 <?php
-		}else{
+	    }else{
+        
 ?>
 		<div class="updated">
 			<p><strong><?php _e('Invalid values, the settings have not been updated', 'flickr-photostream' ); ?></strong></p>
@@ -177,7 +167,7 @@ function flickr_photostream_setting() {
 		#poststuff h3 { cursor: auto; }
 	</style>
 
-			 
+		   
 	<div class="wrap">
 		<h2>Flickr Photostream</h2>
 
@@ -286,7 +276,7 @@ function flickr_photostream_setting() {
 						<table class="form-table">
 							<tr>
 								<th scope="row">
-									<label><?php _e('Flickr API Key', 'flickr-photostream'); ?></label>
+									<label>Flickr API Key</label>
 								</th>
 								<td>
 									<label for="flickr_photostream_APIKey">
@@ -340,15 +330,16 @@ function flickr_photostream_setting() {
 								</td>
 							</tr>
 							<tr>
-								<th scope="row"><?php _e('Last Row', 'flickr-photostream' ); ?></th>
+								<th scope="row"><?php _e('Justify Last Row', 'flickr-photostream' ); ?></th>
 								<td>
 									<label for="">
-										<select name="flickr_photostream_lastRow" style="margin-right:5px">
-											<option value="justify" <?php if ($flickr_photostream_astRow_saved === 'justify') { echo('selected="selected"'); }; ?> ><?php _e('Justify', 'flickr-photostream' );?></option>
-											<option value="nojustify" <?php if ($flickr_photostream_astRow_saved === 'nojustify') { echo('selected="selected"'); }; ?> ><?php _e('No justify', 'flickr-photostream' ); ?></option>
-											<option value="hide" <?php if ($flickr_photostream_astRow_saved === 'hide') { echo('selected="selected"'); }; ?> ><?php _e('Hide if it cannot be justified', 'flickr-photostream' ); ?></option>
-										</select>
-										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'last_row' . __('</code> attribute to change this default value (with the value <code>justify</code>, <code>nojustify</code> or <code>hide</code>)', 'flickr-photostream') ); ?></div>
+										<input type="checkbox" name="flickr_photostream_justifyLastRow" 
+											<?php if($flickr_photostream_justifyLastRow_saved == 1){ echo('checked="checked"'); }; ?> 
+											value="1"
+											style="margin-right:5px"
+										/>
+										<?php _e('If enabled, the last row will be justified. In this case the last images can be very bigger than the others.', 'flickr-photostream' ); ?></li>
+										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'justify_last_row' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
 									</label>
 								</td>
 							</tr>
@@ -357,7 +348,7 @@ function flickr_photostream_setting() {
 								<td>
 									<label for="flickr_photostream_fixedHeight">
 										<input type="checkbox" name="flickr_photostream_fixedHeight" 
-											<?php if ($flickr_photostream_fixedHeight_saved == 1) { echo('checked="checked"'); }; ?> 
+											<?php if($flickr_photostream_fixedHeight_saved == 1){ echo('checked="checked"'); }; ?> 
 											value="1"
 											style="margin-right:5px"
 										/>
@@ -371,9 +362,9 @@ function flickr_photostream_setting() {
 								<td>
 									<label for="flickr_photostream_pagination">
 										<select name="flickr_photostream_pagination" style="margin-right:5px">
-											<option value="none" <?php if ($flickr_photostream_pagination_saved === 'none') { echo('selected="selected"'); }; ?> ><?php _e('None', 'flickr-photostream'); ?></option>
-											<option value="prevnext" <?php if ($flickr_photostream_pagination_saved === 'prevnext') { echo('selected="selected"'); }; ?> ><?php _e('Previous and Next', 'flickr-photostream'); ?></option>
-											<option value="numbers" <?php if ($flickr_photostream_pagination_saved === 'numbers') { echo('selected="selected"'); }; ?> ><?php _e('Page Numbers', 'flickr-photostream'); ?></option>
+											<option value="none" <?php if($flickr_photostream_pagination_saved === 'none'){ echo('selected="selected"'); }; ?> >None</option>
+											<option value="prevnext" <?php if($flickr_photostream_pagination_saved === 'prevnext'){ echo('selected="selected"'); }; ?> >Previous and Next</option>
+											<option value="numbers" <?php if($flickr_photostream_pagination_saved === 'numbers'){ echo('selected="selected"'); }; ?> >Page Numbers</option>
 										</select>
 										<?php _e('If enabled, navigation buttons will be shown, and you can see the older photos.<br/><i>Use only one instance per page with this settings enabled!</i>', 'flickr-photostream' ); ?></li>
 										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'pagination' . __('</code> attribute to change this default value (with the value <code>none</code>, <code>prevnext</code> or <code>numbers</code>)', 'flickr-photostream') ); ?></div>
@@ -385,9 +376,9 @@ function flickr_photostream_setting() {
 								<td>
 									<label for="flickr_photostream_lightbox">
 									<select name="flickr_photostream_lightbox" style="margin-right:5px">
-										<option value="none" <?php if ($flickr_photostream_lightbox_saved === 'none') { echo('selected="selected"'); }; ?> ><?php _e('None', 'flickr-photostream'); ?></option>
-										<option value="colorbox" <?php if ($flickr_photostream_lightbox_saved === 'colorbox') { echo('selected="selected"'); }; ?> >Colorbox</option>
-										<option value="swipebox" <?php if ($flickr_photostream_lightbox_saved === 'swipebox') { echo('selected="selected"'); }; ?> >Swipebox</option>
+										<option value="none" <?php if($flickr_photostream_lightbox_saved === 'none'){ echo('selected="selected"'); }; ?> >None</option>
+										<option value="colorbox" <?php if($flickr_photostream_lightbox_saved === 'colorbox'){ echo('selected="selected"'); }; ?> >Colorbox</option>
+										<option value="swipebox" <?php if($flickr_photostream_lightbox_saved === 'swipebox'){ echo('selected="selected"'); }; ?> >Swipebox</option>
 									</select>
 									<div>
 										<?php echo( __('With Colorbox, make sure that you have installed it with a plugin (i.e. ', 'flickr-photostream' ) . '<a href="http://wordpress.org/extend/plugins/jquery-colorbox/">jQuery Colorbox</a>, <a href="http://wordpress.org/extend/plugins/lightbox-plus/">Lightbox Plus</a>).'); ?>
@@ -402,26 +393,12 @@ function flickr_photostream_setting() {
 								<td>
 									<label for="flickr_photostream_captions">
 									<input type="checkbox" name="flickr_photostream_captions" 
-										<?php if ($flickr_photostream_captions_saved == 1) { echo('checked="checked"'); }; ?> 
+										<?php if($flickr_photostream_captions_saved == 1){ echo('checked="checked"'); }; ?> 
 										value="1" 
 										style="margin-right:5px"
 									/>
 									<?php _e('If enabled, the title of the photo will be shown over the image when the mouse is over. Note: <i>captions, with small images, become aesthetically unpleasing</i>.', 'flickr-photostream'); ?></li>
 										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'captions' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row"><?php _e('Randomize order', 'flickr-photostream' ); ?></th>
-								<td>
-									<label for="flickr_photostream_randomize">
-										<input type="checkbox" name="flickr_photostream_randomize" 
-											<?php if ($flickr_photostream_randomize_saved == 1) { echo('checked="checked"'); }; ?> 
-											value="1"
-											style="margin-right:5px"
-										/>
-										<?php _e('If enabled, the photos of the same page are randomized.', 'flickr-photostream' ); ?></li>
-										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'randomize' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
 									</label>
 								</td>
 							</tr>
@@ -435,20 +412,6 @@ function flickr_photostream_setting() {
 										/>
 										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'margins' . __('</code> attribute to change this default value', 'flickr-photostream') ); ?></div>
 									</label> 	
-								</td>
-							</tr>
-							<tr>
-								<th scope="row"><?php _e('Open original images', 'flickr-photostream' ); ?></th>
-								<td>
-									<label for="flickr_photostream_openOriginals">
-										<input type="checkbox" name="flickr_photostream_openOriginals" 
-											<?php if ($flickr_photostream_openOriginals_saved == 1) { echo('checked="checked"'); }; ?> 
-											value="1"
-											style="margin-right:5px"
-										/>
-										<?php _e('If enabled, the lightbox will show the original images if they are available. Consider to leave this option off if your original images are very large.', 'flickr-photostream' ); ?></li>
-										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'open_originals' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
-									</label>
 								</td>
 							</tr>
 						</table>
