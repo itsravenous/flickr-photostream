@@ -71,11 +71,7 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
-= 2.4.1 =
-
-* revert old version due to some bugs with the new changes
-
-= 2.4 =
+= 3.0 =
 
 * Justified gallery 3.0
 	* Less images crops 
