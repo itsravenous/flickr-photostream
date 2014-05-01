@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 3.0
+Version: 3.0.1
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -68,7 +68,7 @@ if (!function_exists( 'flickrps_plugin_uninstall')) {
 // add the admin options page
 add_action('admin_menu', 'flickr_photostream_admin_add_page');
 function flickr_photostream_admin_add_page() {
-	add_options_page('FlickrPhotostreamSettings', 'Flickr Photostream', 10, 'flickrps', 'flickr_photostream_setting');
+	add_options_page('FlickrPhotostreamSettings', 'Flickr Photostream', 'activate_plugins', 'flickrps', 'flickr_photostream_setting');
 }
 
 function flickr_photostream_setting() {
