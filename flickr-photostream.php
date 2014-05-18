@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 3.0.1
+Version: 3.1
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -70,10 +70,10 @@ function flickrps_init() {
 add_action('wp_enqueue_scripts', 'flickrps_addCSSandJS');
 function flickrps_addCSSandJS() {
 	wp_register_style('justifiedGalleryCSS', plugins_url('justifiedgallery/css/justifiedGallery.min.css', __FILE__));
-	wp_register_style('swipeboxCSS', plugins_url('swipebox/swipebox.min.css', __FILE__));
+	wp_register_style('swipeboxCSS', plugins_url('swipebox/css/swipebox.min.css', __FILE__));
 	
 	wp_register_script('justifiedGalleryJS', plugins_url('justifiedgallery/js/jquery.justifiedGallery.min.js', __FILE__));
-	wp_register_script('swipeboxJS', plugins_url('swipebox/jquery.swipebox.min.js', __FILE__));
+	wp_register_script('swipeboxJS', plugins_url('swipebox/js/jquery.swipebox.min.js', __FILE__));
 
 	wp_enqueue_style('justifiedGalleryCSS');
 	wp_enqueue_style('swipeboxCSS');
