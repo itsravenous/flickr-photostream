@@ -3,7 +3,7 @@ Contributors: miro.mannino
 Donate link: http://miromannino.com/projects/flickr-photostream/#helptheproject
 Tags: photography, gallery, photo, flickr, photostream, set, justified, grid
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.txt
@@ -70,6 +70,12 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 
 == Changelog ==
+
+= 3.1.1 =
+
+* Fixed 'No photos' with tags
+* Fixed links to Flickr for sets
+* Justified gallery 3.2
 
 = 3.0 =
 

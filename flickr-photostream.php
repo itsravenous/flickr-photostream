@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 3.1
+Version: 3.1.1
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -318,7 +318,13 @@ function flickrps_createGallery($action, $atts) {
 				if ($f->getErrorCode() != NULL) return(flickrps_formatFlickrAPIError($f->getErrorMsg()));
 			}
 
-			$ris .= '<a href="' . $photos_url[$photo_owner] . $photo['id'] . '/in/photostream/lightbox/" ';
+			if ($action === 'set') {
+				$photos_url_in = '/in/set-' . $id . '/lightbox';
+			} else {
+				$photos_url_in = '/in/photostream/lightbox';
+			}
+
+			$ris .= '<a href="' . $photos_url[$photo_owner] . $photo['id'] . $photos_url_in . '" ';
 			if ($target_blank) $ris .= 'target="_blank" ';
 			$ris .= 'title="' . $photo['title'] . '">';
 		
