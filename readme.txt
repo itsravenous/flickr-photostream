@@ -73,7 +73,7 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 = 3.1.2 =
 
-* nextgen version of phpFlickr to solve the keys problems 
+* nextend version of phpFlickr to solve the keys problems 
 * Fixed 'No photos' with tags
 * Fixed links to Flickr for sets
 * Justified gallery 3.2
