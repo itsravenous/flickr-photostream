@@ -71,6 +71,10 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
+= 3.1.3 =
+
+* phpFlickr 3.1.1
+
 = 3.1.2 =
 
 * nextend version of phpFlickr to solve the keys problems 
