@@ -1,7 +1,7 @@
 <?php
 /* 
 Flickr Photostream
-Version: 3.1.3
+Version: 3.1.4
 Author: Miro Mannino
 Author URI: http://miromannino.it
 
@@ -62,6 +62,9 @@ if (!function_exists( 'flickrps_plugin_uninstall')) {
 		if (get_option('$flickr_photostream_openOriginals')) {
 			delete_option('$flickr_photostream_openOriginals');
 		}
+		if (get_option('$flickr_photostream_bcontextmenu')) {
+			delete_option('$flickr_photostream_bcontextmenu');
+		}
 	}
 }
 
@@ -82,6 +85,7 @@ function flickr_photostream_setting() {
 	global $flickr_photostream_randomize_default;
 	global $flickr_photostream_margins_default;
 	global $flickr_photostream_openOriginals_default;
+	global $flickr_photostream_bcontextmenu_default;
 
 	//Get Values
 	$flickr_photostream_userID_saved = get_option('$flickr_photostream_userID', "");
@@ -96,6 +100,7 @@ function flickr_photostream_setting() {
 	$flickr_photostream_randomize_saved = (int)get_option('$flickr_photostream_randomize', $flickr_photostream_randomize_default);
 	$flickr_photostream_margins_saved = (int)get_option('$flickr_photostream_margins', $flickr_photostream_margins_default);
 	$flickr_photostream_openOriginals_saved = (int)get_option('$flickr_photostream_openOriginals', $flickr_photostream_openOriginals_default);
+	$flickr_photostream_bcontextmenu_saved = (int)get_option('$flickr_photostream_bcontextmenu', $flickr_photostream_bcontextmenu_default);
 	
 	//Save Values
 	if (isset($_POST['Submit'])) {
@@ -139,6 +144,7 @@ function flickr_photostream_setting() {
 		$flickr_photostream_randomize_saved = ((int)$_POST["flickr_photostream_randomize"] != 0)? 1:0;
 		$flickr_photostream_margins_saved = (int)$_POST["flickr_photostream_margins"];
 		$flickr_photostream_openOriginals_saved = ((int)$_POST["flickr_photostream_openOriginals"] != 0)? 1:0;
+		$flickr_photostream_bcontextmenu_saved = ((int)$_POST["flickr_photostream_bcontextmenu"] != 0)? 1:0;
 		if ($flickr_photostream_margins_saved <= 0 || $flickr_photostream_margins_saved > 30) {
 			$error = true;
 			$error_msg .= '<li>' . __('The \'Margins\' field must have a value greater than 0, and not greater than 30', 'flickr-photostream' ) . '</li>';
@@ -157,6 +163,7 @@ function flickr_photostream_setting() {
 			update_option( '$flickr_photostream_randomize', $flickr_photostream_randomize_saved );
 			update_option( '$flickr_photostream_margins', $flickr_photostream_margins_saved );
 			update_option( '$flickr_photostream_openOriginals', $flickr_photostream_openOriginals_saved );
+			update_option( '$flickr_photostream_bcontextmenu', $flickr_photostream_bcontextmenu_saved );
 ?>
 		<div class="updated">
 			<p><strong><?php _e('Settings updated.', 'flickr-photostream' ); ?></strong></p>
@@ -448,6 +455,20 @@ function flickr_photostream_setting() {
 										/>
 										<?php _e('If enabled, the lightbox will show the original images if they are available. Consider to leave this option off if your original images are very large.', 'flickr-photostream' ); ?></li>
 										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'open_originals' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><?php _e('Block right click', 'flickr-photostream' ); ?></th>
+								<td>
+									<label for="flickr_photostream_bcontextmenu">
+										<input type="checkbox" name="flickr_photostream_bcontextmenu" 
+											<?php if ($flickr_photostream_bcontextmenu_saved == 1) { echo('checked="checked"'); }; ?> 
+											value="1"
+											style="margin-right:5px"
+										/>
+										<?php _e('If enabled, the context menu will be blocked, so for the user is more difficult to save the images', 'flickr-photostream' ); ?></li>
+										<div><?php echo( __('You can use the <code>', 'flickr-photostream') . 'block_contextmenu' . __('</code> attribute to change this default value (with the value <code>true</code> or <code>false</code>)', 'flickr-photostream') ); ?></div>
 									</label>
 								</td>
 							</tr>

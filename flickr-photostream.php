@@ -3,7 +3,7 @@
 Plugin Name: Flickr Photostream
 Plugin URI: http://miromannino.it/projects/flickr-photostream/
 Description: Shows the flickr photostream, sets and galleries, with an high quality justified gallery.
-Version: 3.1.3
+Version: 3.1.4
 Author: Miro Mannino
 Author URI: http://miromannino.it/about-me/
 
@@ -35,6 +35,7 @@ $flickr_photostream_captions_default = '1';
 $flickr_photostream_randomize_default = '0';
 $flickr_photostream_margins_default = '1';
 $flickr_photostream_openOriginals_default = '0';
+$flickr_photostream_bcontextmenu_default = '0';
 
 //Add the link to the plugin page
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'flickrps_plugin_settings_link' );
@@ -106,6 +107,7 @@ function flickrps_createGallery($action, $atts) {
 	global $flickr_photostream_randomize_default;
 	global $flickr_photostream_margins_default;
 	global $flickr_photostream_openOriginals_default;
+	global $flickr_photostream_bcontextmenu_default;
 	static $shortcode_unique_id = 0;
 	$ris = "";
 	
@@ -124,13 +126,14 @@ function flickrps_createGallery($action, $atts) {
 		'images_height' => get_option('$flickr_photostream_imagesHeight', $flickr_photostream_imagesHeight_default), // Flickr images size
 		'max_num_photos' => get_option('$flickr_photostream_maxPhotosPP', $flickr_photostream_maxPhotosPP_default), // Max number of Photos	
 		'last_row' => get_option('$flickr_photostream_lastRow', $flickr_photostream_lastRow_default),
-		'fixed_height' => (get_option('$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_default) == 1 ? 'true' : 'false'),
+		'fixed_height' => get_option('$flickr_photostream_fixedHeight', $flickr_photostream_fixedHeight_default) == 1,
 		'lightbox' => get_option('$flickr_photostream_lightbox', $flickr_photostream_lightbox_default),
-		'captions' => (get_option('$flickr_photostream_captions', $flickr_photostream_captions_default) == 1 ? 'true' : 'false'),
-		'randomize' => (get_option('$flickr_photostream_randomize', $flickr_photostream_randomize_default) == 1 ? 'true' : 'false'),
+		'captions' => get_option('$flickr_photostream_captions', $flickr_photostream_captions_default) == 1,
+		'randomize' => get_option('$flickr_photostream_randomize', $flickr_photostream_randomize_default) == 1,
 		'pagination' => get_option('$flickr_photostream_pagination', $flickr_photostream_pagination_default),
 		'margins' => get_option('$flickr_photostream_margins', $flickr_photostream_margins_default),
-		'open_originals' => (get_option('$flickr_photostream_openOriginals', $flickr_photostream_openOriginals_default) == 1 ? 'true' : 'false')
+		'open_originals' => get_option('$flickr_photostream_openOriginals', $flickr_photostream_openOriginals_default) == 1,
+		'block_contextmenu' => get_option('$flickr_photostream_bcontextmenu', $flickr_photostream_bcontextmenu_default) == 1
 	), $atts ) );
 
 	//LEGACY for the old options
@@ -145,17 +148,9 @@ function flickrps_createGallery($action, $atts) {
 	$max_num_photos = (int)$max_num_photos;
 	if ($max_num_photos < 1) $max_num_photos = 1;
 
-	$fixed_height = ($fixed_height === 'true');
-
-	$captions = ($captions === 'true');
-
-	$randomize = ($randomize === 'true');
-
 	$margins = (int)$margins;
 	if ($margins < 0) $margins = 1;
 	if ($margins > 30) $margins = 30;
-
-	$open_originals = ($open_originals === 'true');
 
 	if($pagination === 'none') $page_num = 1;
 
@@ -271,7 +266,7 @@ function flickrps_createGallery($action, $atts) {
 		$imgSize = "small_320"; //small (longest side:320)
 	}
 
-	$ris .= '<!-- Flickr Photostream by Miro Mannino -->' . "\n" .	'<div id="flickrGal' . $shortcode_unique_id . '" >';
+	$ris .= '<!-- Flickr Photostream by Miro Mannino -->' . "\n" .	'<div id="flickrGal' . $shortcode_unique_id . '" class="justified-gallery" >';
 
 	$r = 0;
 
@@ -338,7 +333,7 @@ function flickrps_createGallery($action, $atts) {
 
 	$ris .= '</div>'
 			 .	'<script type="text/javascript">'
-			 .	'jQuery("#flickrGal' . $shortcode_unique_id . '")';
+			 .	'jQuery(document).ready(function(){ jQuery("#flickrGal' . $shortcode_unique_id . '")';
 
 
 	if ($lightbox === 'colorbox') {
@@ -367,7 +362,15 @@ function flickrps_createGallery($action, $atts) {
 		$ris .= ', \'sizeRangeSuffixes\': {\'lt100\':\'_t\',\'lt240\':\'_m\',\'lt320\':\'_n\',\'lt500\':\'\',\'lt640\':\'_z\',\'lt1024\':\'_z\'}';
 	}
 
-	$ris .= '});'
+	$ris .= '});';
+
+	if ($block_contextmenu) {
+		$ris .= 'jQuery("#flickrGal' . $shortcode_unique_id . '").find("> a").on("contextmenu", function (e) {'
+			. 'e.preventDefault();'
+			. '})';
+	}
+	
+	$ris .= ' });'
 			 .	'</script>';
 
 	//Navigation---------------------

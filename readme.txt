@@ -71,8 +71,9 @@ Yes, of course. But remember that the cache don't allow to see the changes immed
 
 == Changelog ==
 
-= 3.1.3 =
+= 3.1.4 = 
 
+* new option to disable the right click 
 * phpFlickr 3.1.1
 
 = 3.1.2 =
