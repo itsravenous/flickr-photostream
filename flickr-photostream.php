@@ -300,6 +300,7 @@ function flickrps_createGallery($action, $atts) {
 
 			$ris .= '" rel="flickrGal' . $shortcode_unique_id 
 					 .	'" title="' . $photo['title'] 
+					 .	'" data-description="' . $photo['description'] 
 				 	 .	'">';	
 			
 		} else {
